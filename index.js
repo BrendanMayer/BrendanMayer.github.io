@@ -3,7 +3,6 @@ import {
     skills,
     projects,
     education,
-    experience,
     footer,
   } from "./data.js";
 
@@ -481,7 +480,6 @@ import { URLs } from './user-data/urls.js';
   populateProjects(androidProjects, "android-projects");
   populateProjects(freelanceProjects, "freelance-projects");
   
-  populateExp_Edu(experience, "experience");
   populateExp_Edu(education, "education");
   
   populateLinks(footer, "footer");
