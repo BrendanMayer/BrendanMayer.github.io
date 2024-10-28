@@ -49,6 +49,16 @@ export const skills = [
 ];
 
 export const projects = {
+  currentProject: [
+    {
+      projectName: "ChatGPT Generated Procedural Dialogue in Unity",
+      image: "images/programmingdiaries.png",
+      summary:
+        "A Game Developed in Unity that integrates ChatGPT Responses and Prompting through speech to text in order to generate procedural dialogue between NPCS",
+      preview: "https://programmingdiaries.herokuapp.com/",
+      techStack: ["OpenAI", "Unity", "Blender", "C#"],
+    },
+  ],
   webProjects: [
     {
       projectName: "Programming Diaries",
