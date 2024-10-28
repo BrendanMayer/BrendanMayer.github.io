@@ -1,37 +1,36 @@
 export const bio = [
-  "Hello! I'm Vinay Somawat, an experienced Frontend Software Engineer with a proven ability to upgrade applications, optimize performance, and deliver innovative solutions.",
-  "I am passionate about using my technical skills to drive impactful contributions in challenging projects.",
-  "Thanks for visiting!",
+  "Hello, I am Brendan Mayer, currently a student studying Computer Science at South East Technological University.",
+  " This Portfolio aims to provide insight to my skills and experience through the projects I have worked on."
 ];
 
 export const skills = [
   {
     title: "Languages",
-    skillName: "JavaScript, TypeScript",
+    skillName: "JavaScript, TypeScript, Java",
     color: "1",
-    percentage: "80",
+    percentage: "60",
   },
   {
-    title: "Frameworks/Libraries",
-    skillName: "Angular, RxJS, NGRX/NGXS",
+    title: "Languages2",
+    skillName: "C#, C++, Lua",
     color: "6",
-    percentage: "70",
+    percentage: "85",
   },
   {
     title: "Design",
-    skillName: "HTML, Bootstrap, Tailwind",
+    skillName: "HTML, CSS",
     color: "4",
-    percentage: "70",
+    percentage: "60",
   },
   {
     title: "Version Control",
-    skillName: "GitHub, JIRA, Bitbucket",
+    skillName: "GitHub, Unity Cloud",
     color: "7",
     percentage: "70",
   },
   {
-    title: "Tools",
-    skillName: "Debugging, Chrome DevTools",
+    title: "Software",
+    skillName: "Unity, Blender, FL Studio",
     color: "3",
     percentage: "80",
   },
@@ -41,12 +40,12 @@ export const skills = [
 //     color: "5",
 //     percentage: "50",
 //   },
-//   {
-//     title: "IDE",
-//     skillName: "VS Code",
-//     color: "6",
-//     percentage: "70",
-//   },
+   {
+     title: "IDE",
+     skillName: "VS Code, Visual Studio 2022, Clion, Intellij Idea",
+     color: "6",
+     percentage: "70",
+   },
 ];
 
 export const projects = {
@@ -301,8 +300,8 @@ export const footer = [
   {
     label: "copyright-text",
     data: [
-      "Made with &hearts; by Vinay Somawat.",
-      "&copy; No Copyrights. Feel free to use this template.",
+      "Template Forked from vinaysomawat.",
+      
     ],
   },
 ];
