@@ -161,7 +161,7 @@ export const education = [
       "2D Games Development",
       "3D Modelling",
       "Programming Fundamentals",
-      "Mobile App Development"
+      "Mobile App Development",
     ],
     icon: "graduation-cap",
   },
@@ -186,23 +186,23 @@ export const footer = [
 //       },
 //     ],
 //   },
-//   {
-//     label: "Resources",
-//     data: [
-//       {
-//         text: "Enable Dark/Light Mode",
-//         func: "enableDarkMode()",
-//       },
-//       {
-//         text: "Print this page",
-//         func: "window.print()",
-//       },
-//       {
-//         text: "Clone this page",
-//         link: "https://github.com/vinaysomawat/vinaysomawat.github.io",
-//       },
-//     ],
-//   },
+   {
+    label: "Resources",
+    data: [
+      {
+        text: "Enable Dark/Light Mode",
+        func: "enableDarkMode()",
+      },
+      {
+        text: "Print this page",
+        func: "window.print()",
+      },
+      {
+        text: "Clone this page",
+        link: "https://github.com/vinaysomawat/vinaysomawat.github.io",
+      },
+    ],
+  },
   {
     label: "Links",
     data: [
