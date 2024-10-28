@@ -152,7 +152,7 @@ export const education = [
     title: "Bachelors(Hons) in Computer Science",
     duration: "2021 - 2025",
     subtitle: "South East Technological University Waterford",
-    details: [],
+    details: ["Currently in 4th year"],
     tags: [
       "Data Structures & Algorithms",
       "Web App Development",
