@@ -62,7 +62,7 @@ p {
 }
 x {
 	margin-bottom: 1.5em;
-	background-color: darkkhaki;
+	background-color: grey;
 	backface-visibility: visible;
 }
 
@@ -138,7 +138,7 @@ figure figcaption {
 	width: 300px;
 	position: fixed;
 	z-index: 1001;
-	background-color: #f9bf3f;
+	background-color: cyan;
 	-webkit-transition: 0.5s;
 	-o-transition: 0.5s;
 	transition: 0.5s;
@@ -152,7 +152,7 @@ figure figcaption {
 		-o-transform: translateX(-300px);
 		transform: translateX(-300px);
 		padding-top: 4em;
-		background-color: #f9bf3f;
+		background-color: cyan;
 		height: auto;
 	}
 	.resume-content img {
