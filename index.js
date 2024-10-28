@@ -142,6 +142,7 @@ import { URLs } from './user-data/urls.js';
    */
   
   function populateProjects(items, id) {
+    console.log(`Populating projects for ${id}`, items); 
     let projectdesign = document.getElementById(id);
   
     let h4 = document.createElement("h4");
