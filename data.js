@@ -55,7 +55,7 @@ export const projects = {
       image: "images/programmingdiaries.png",
       summary:
         "A Game Developed in Unity that integrates ChatGPT Responses and Prompting through speech to text in order to generate procedural dialogue between NPCS",
-      preview: "https://programmingdiaries.herokuapp.com/",
+      preview: "https://github.com/BrendanMayer/Got-A-Job",
       techStack: ["OpenAI", "Unity", "Blender", "C#"],
     },
   ],
