@@ -330,3 +330,8 @@ if (typeof $.fn.stick_in_parent === 'function') {
 }
 
 populateExp_Edu(education, 'education');
+console.log('Projects loaded');
+populateProjects(projects.webProjects, 'web-projects');
+populateProjects(projects.softwareProjects, 'software-projects');
+populateProjects(projects.androidProjects, 'android-projects');
+populateProjects(projects.gameDevProjects, 'gameDev-projects');

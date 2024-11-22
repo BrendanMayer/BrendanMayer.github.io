@@ -142,7 +142,50 @@ import { URLs } from './user-data/urls.js';
    */
   
   
+
 function populateProjects(items, id) {
+    console.log(`Populating projects for ${id}:`, items); // Debug log to check items array
+    const projectContainer = document.getElementById(id);
+    if (!projectContainer) {
+        console.error(`No container found for ID: ${id}`);
+        return;
+    }
+
+    projectContainer.innerHTML = ""; // Clear existing content
+
+    items.forEach(({ projectName, image, summary }) => {
+        if (!projectName || !image || !summary) {
+            console.error("Invalid project data:", { projectName, image, summary });
+            return;
+        }
+
+        const card = document.createElement("div");
+        card.className = "project-card";
+
+        // Add project name
+        const nameHeading = document.createElement("h3");
+        nameHeading.className = "project-name";
+        nameHeading.textContent = projectName;
+
+        // Add project image
+        const img = document.createElement("img");
+        img.className = "project-image img-fluid";
+        img.src = image;
+        img.alt = projectName;
+
+        // Add project description
+        const description = document.createElement("p");
+        description.className = "project-description";
+        description.textContent = summary;
+
+        // Combine all elements into the card
+        card.appendChild(nameHeading);
+        card.appendChild(img);
+        card.appendChild(description);
+        projectContainer.appendChild(card);
+    });
+}
+
     console.log(`Populating projects for ${id}`, items);
     let projectdesign = document.getElementById(id);
 
