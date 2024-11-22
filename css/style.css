@@ -138,7 +138,7 @@ figure figcaption {
 	width: 300px;
 	position: fixed;
 	z-index: 1001;
-	background-color: #3a4cff;
+	background-color: cyan;
 	-webkit-transition: 0.5s;
 	-o-transition: 0.5s;
 	transition: 0.5s;
@@ -152,7 +152,7 @@ figure figcaption {
 		-o-transform: translateX(-300px);
 		transform: translateX(-300px);
 		padding-top: 4em;
-		background-color: #3a4cff;
+		background-color: cyan;
 		height: auto;
 	}
 	.resume-content img {
@@ -519,7 +519,7 @@ body.offcanvas #colorlib-aside {
 	-o-transform: translateX(0);
 	transform: translateX(0);
 	width: 372px;
-	background-color: #3a4cff;
+	background-color: cyan;
 	z-index: 999;
 	position: fixed;
 }
@@ -2251,24 +2251,3 @@ span {
     font-weight: 600;
 }
   
-.colorlib-current-project .current-project-title {
-   font-size: 2.5em;
-   margin-bottom: 0.5em;
-   text-align: center;
-}
-.colorlib-current-project .current-project-images img {
-   width: 48%;
-   margin: 1%;
-   display: inline-block;
-}
-
-.colorlib-current-project .current-project-title {
-   font-size: 2.5em;
-   margin-bottom: 0.5em;
-   text-align: center;
-}
-.colorlib-current-project .current-project-images img {
-   width: 48%;
-   margin: 1%;
-   display: inline-block;
-}

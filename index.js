@@ -486,22 +486,3 @@ import { URLs } from './user-data/urls.js';
   
   populateLinks(footer, "footer");
   
-
-const populateCurrentProject = () => {
-   const { projectName, image1, image2, summary } = projects.currentProject[0];
-   document.getElementById("current-project-name").innerText = projectName;
-   document.getElementById("current-project-img1").src = image1;
-   document.getElementById("current-project-img2").src = image2;
-   document.getElementById("current-project-desc").innerText = summary;
-};
-populateCurrentProject();
-
-
-const populateCurrentProject = () => {
-   const { projectName, image1, image2, summary } = projects.currentProject[0];
-   document.getElementById("current-project-name").innerText = projectName;
-   document.getElementById("current-project-img1").src = image1;
-   document.getElementById("current-project-img2").src = image2;
-   document.getElementById("current-project-desc").innerText = summary;
-};
-populateCurrentProject();
