@@ -1,7 +1,10 @@
-export const bio = [
+export const bio = ["I am a software developer specializing in web and game development.","I enjoy creating interactive and responsive user experiences.","I am skilled in JavaScript, React, and game design tools."] [
   "Hello, I am Brendan Mayer, currently a student studying Computer Science at South East Technological University.",
   " This Portfolio aims to provide insight to my skills and experience through the projects I have worked on."
 ];
+
+// "Hello, I am Brendan Mayer, currently a student studying Computer Science at South East Technological University.",
+ // " This Portfolio aims to provide insight to my skills and experience through the projects I have worked on."
 
 export const skills = [
   {

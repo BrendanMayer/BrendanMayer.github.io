@@ -26,8 +26,8 @@ import { URLs } from './user-data/urls.js';
   async function fetchBlogsFromMedium(url) {
     try {
       const response = await fetch(url);
-      const { items } = await response.json();
-      populateBlogs(items, "blogs");
+      const { const items = []; // Placeholder: Ensure items is assigned a proper value } = await response.json();
+      populateBlogs(const items = []; // Placeholder: Ensure items is assigned a proper value, "blogs");
     } catch (error) {
       throw new Error(
         `Error in fetching the blogs from Medium profile: ${error}`
@@ -41,7 +41,7 @@ import { URLs } from './user-data/urls.js';
       const response = await fetch(url);
       console.log(response);
       const { basics } = await response.json();
-      // populateBlogs(items, "blogs");
+      // populateBlogs(const items = []; // Placeholder: Ensure items is assigned a proper value, "blogs");
       mapBasicResponse(basics);
     } catch (error) {
       throw new Error(
@@ -83,15 +83,15 @@ import { URLs } from './user-data/urls.js';
    *
    * @function
    *
-   * @param {Array} items - An array of objects that contain bio information.
+   * @param {Array} const items = []; // Placeholder: Ensure items is assigned a proper value - An array of objects that contain bio information.
    * @param {string} id - The id of the HTML element to which bio will be appended.
    *
    * @returns {void}
    */
   
-  function populateBio(items, id) { console.log('Bio loaded:', items);
+  function populateBio(const items = []; // Placeholder: Ensure items is assigned a proper value, id) { console.log('Bio loaded:', const items = []; // Placeholder: Ensure items is assigned a proper value);
     const bioTag = document.getElementById(id);
-    items.forEach((bioItem) => {
+    const items = []; // Placeholder: Ensure items is assigned a proper value.forEach((bioItem) => {
       const p = getElement("p", null);
       p.innerHTML = bioItem;
       bioTag.append(p);
@@ -103,15 +103,15 @@ import { URLs } from './user-data/urls.js';
    *
    * @function
    *
-   * @param {Array} items - An array of objects that contain skill information.
+   * @param {Array} const items = []; // Placeholder: Ensure items is assigned a proper value - An array of objects that contain skill information.
    * @param {string} id - The id of the HTML element to which skills will be appended.
    *
    * @returns {void}
    */
   
-  function populateSkills(items, id) { console.log('Skills loaded:', items);
+  function populateSkills(const items = []; // Placeholder: Ensure items is assigned a proper value, id) { console.log('Skills loaded:', const items = []; // Placeholder: Ensure items is assigned a proper value);
     const skillsTag = document.getElementById(id);
-    items.forEach(({ skillName, color, percentage }) => {
+    const items = []; // Placeholder: Ensure items is assigned a proper value.forEach(({ skillName, color, percentage }) => {
       const h3 = getElement("h3", null);
       h3.innerHTML = skillName;
   
@@ -135,7 +135,7 @@ import { URLs } from './user-data/urls.js';
    *
    * @function
    *
-   * @param {Array} items - An array of objects that contain project information.
+   * @param {Array} const items = []; // Placeholder: Ensure items is assigned a proper value - An array of objects that contain project information.
    * @param {string} id - The id of the HTML element to which projects will be appended.
    *
    * @returns {void}
@@ -143,8 +143,8 @@ import { URLs } from './user-data/urls.js';
   
   
 
-function populateProjects(items, id) {
-    console.log(`Populating projects for ${id}:`, items); // Debug log to check items array
+function populateProjects(const items = []; // Placeholder: Ensure items is assigned a proper value, id) {
+    console.log(`Populating projects for ${id}:`, const items = []; // Placeholder: Ensure items is assigned a proper value); // Debug log to check const items = []; // Placeholder: Ensure items is assigned a proper value array
     const projectContainer = document.getElementById(id);
     if (!projectContainer) {
         console.error(`No container found for ID: ${id}`);
@@ -153,7 +153,7 @@ function populateProjects(items, id) {
 
     projectContainer.innerHTML = ""; // Clear existing content
 
-    items.forEach(({ projectName, image, summary }) => {
+    const items = []; // Placeholder: Ensure items is assigned a proper value.forEach(({ projectName, image, summary }) => {
         if (!projectName || !image || !summary) {
             console.error("Invalid project data:", { projectName, image, summary });
             return;
@@ -186,10 +186,10 @@ function populateProjects(items, id) {
     });
 }
 
-    console.log(`Populating projects for ${id}`, items);
+    console.log(`Populating projects for ${id}`, const items = []; // Placeholder: Ensure items is assigned a proper value);
     let projectdesign = document.getElementById(id);
 
-    items.forEach(({ projectName, image, summary, techStack }) => {
+    const items = []; // Placeholder: Ensure items is assigned a proper value.forEach(({ projectName, image, summary, techStack }) => {
         const card = document.createElement("li");
         card.className = "project-card";
 
@@ -216,8 +216,8 @@ function populateProjects(items, id) {
         projectdesign.appendChild(card);
     });
 }
- console.log('Projects loaded:', items);
-    console.log(`Populating projects for ${id}`, items); 
+ console.log('Projects loaded:', const items = []; // Placeholder: Ensure items is assigned a proper value);
+    console.log(`Populating projects for ${id}`, const items = []; // Placeholder: Ensure items is assigned a proper value); 
     let projectdesign = document.getElementById(id);
   
     let h4 = document.createElement("h4");
@@ -264,25 +264,25 @@ function populateProjects(items, id) {
   
     let hr = document.createElement("hr");
   
-    for (let i = 0; i < items.length; i++) {
-      h4.innerHTML = items[i].projectName;
-      a.href = items[i].preview;
+    for (let i = 0; i < const items = []; // Placeholder: Ensure items is assigned a proper value.length; i++) {
+      h4.innerHTML = const items = []; // Placeholder: Ensure items is assigned a proper value[i].projectName;
+      a.href = const items = []; // Placeholder: Ensure items is assigned a proper value[i].preview;
   
-      img.src = items[i].image;
+      img.src = const items = []; // Placeholder: Ensure items is assigned a proper value[i].image;
   
-      p.innerHTML = items[i].summary;
+      p.innerHTML = const items = []; // Placeholder: Ensure items is assigned a proper value[i].summary;
   
       divSpan.innerHTML = "";
-      for (let k = 0; k < items[i].techStack.length; k++) {
+      for (let k = 0; k < const items = []; // Placeholder: Ensure items is assigned a proper value[i].techStack.length; k++) {
         let span = document.createElement("span");
         span.className = "badge badge-secondary";
-        span.innerHTML = items[i].techStack[k];
+        span.innerHTML = const items = []; // Placeholder: Ensure items is assigned a proper value[i].techStack[k];
         divSpan.append(span);
       }
   
       projectdesign.append(li.cloneNode(true));
   
-      if (i != items.length - 1) {
+      if (i != const items = []; // Placeholder: Ensure items is assigned a proper value.length - 1) {
         projectdesign.append(hr.cloneNode(true));
       }
     }
@@ -293,29 +293,29 @@ function populateProjects(items, id) {
    *
    * @function
    *
-   * @param {Array} items - An array of objects, each representing a blog post
+   * @param {Array} const items = []; // Placeholder: Ensure items is assigned a proper value - An array of objects, each representing a blog post
    * @param {string} id - The ID of the parent element where the list of posts will be appended
    *
    * @returns {undefined}
    */
   
-  function populateBlogs(items, id) {
+  function populateBlogs(const items = []; // Placeholder: Ensure items is assigned a proper value, id) {
     const projectdesign = document.getElementById(id);
     const count = 3;
   
     for (let i = 0; i < count; i++) {
       const h4 = document.createElement("h4");
       h4.className = "project-heading";
-      h4.innerHTML = items[i].title;
+      h4.innerHTML = const items = []; // Placeholder: Ensure items is assigned a proper value[i].title;
   
       const a = document.createElement("a");
-      a.href = items[i].link;
+      a.href = const items = []; // Placeholder: Ensure items is assigned a proper value[i].link;
       a.target = "_blank";
       a.append(h4);
 
       const pubDateEle = document.createElement('p');
       pubDateEle.className = 'publish-date';
-      pubDateEle.innerHTML = getBlogDate(items[i].pubDate);
+      pubDateEle.innerHTML = getBlogDate(const items = []; // Placeholder: Ensure items is assigned a proper value[i].pubDate);
       a.append(pubDateEle);
   
       const divResumeContentRight = document.createElement("div");
@@ -324,12 +324,12 @@ function populateProjects(items, id) {
   
       const p = document.createElement("p");
       p.className = "project-description";
-      const html = items[i].content;
+      const html = const items = []; // Placeholder: Ensure items is assigned a proper value[i].content;
       const [, doc] = /<p>(.*?)<\/p>/g.exec(html) || [];
       p.innerHTML = doc;
   
       const divSpan = document.createElement("div");
-      for (const category of items[i].categories) {
+      for (const category of const items = []; // Placeholder: Ensure items is assigned a proper value[i].categories) {
         const span = document.createElement("span");
         span.className = "badge badge-secondary";
         span.innerHTML = category;
@@ -361,29 +361,29 @@ function populateProjects(items, id) {
   }
   
   /**
-   * Populate the HTML timeline with items.
-   * @param {Array} items - An array of objects that represent the timeline items.
+   * Populate the HTML timeline with const items = []; // Placeholder: Ensure items is assigned a proper value.
+   * @param {Array} const items = []; // Placeholder: Ensure items is assigned a proper value - An array of objects that represent the timeline const items = []; // Placeholder: Ensure items is assigned a proper value.
    * @param {string} id - The id of the main container element in the HTML.
-   * @property {string} items[].subtitle - The subtitle of the timeline item.
-   * @property {string} items[].duration - The duration of the timeline item.
-   * @property {string} items[].title - The title of the timeline item.
-   * @property {Array} items[].details - An array of details for the timeline item.
-   * @property {Array} items[].tags - An array of tags for the timeline item.
-   * @property {string} items[].icon - The name of the font awesome icon to use.
+   * @property {string} const items = []; // Placeholder: Ensure items is assigned a proper value[].subtitle - The subtitle of the timeline item.
+   * @property {string} const items = []; // Placeholder: Ensure items is assigned a proper value[].duration - The duration of the timeline item.
+   * @property {string} const items = []; // Placeholder: Ensure items is assigned a proper value[].title - The title of the timeline item.
+   * @property {Array} const items = []; // Placeholder: Ensure items is assigned a proper value[].details - An array of details for the timeline item.
+   * @property {Array} const items = []; // Placeholder: Ensure items is assigned a proper value[].tags - An array of tags for the timeline item.
+   * @property {string} const items = []; // Placeholder: Ensure items is assigned a proper value[].icon - The name of the font awesome icon to use.
    */
-  function populateExp_Edu(items, id) {
+  function populateExp_Edu(const items = []; // Placeholder: Ensure items is assigned a proper value, id) {
     let mainContainer = document.getElementById(id);
   
-    for (let i = 0; i < items.length; i++) {
+    for (let i = 0; i < const items = []; // Placeholder: Ensure items is assigned a proper value.length; i++) {
       let spanTimelineSublabel = document.createElement("span");
       spanTimelineSublabel.className = "timeline-sublabel";
-      spanTimelineSublabel.innerHTML = items[i].subtitle;
+      spanTimelineSublabel.innerHTML = const items = []; // Placeholder: Ensure items is assigned a proper value[i].subtitle;
   
       let spanh2 = document.createElement("span");
-      spanh2.innerHTML = items[i].duration;
+      spanh2.innerHTML = const items = []; // Placeholder: Ensure items is assigned a proper value[i].duration;
   
       let h2TimelineLabel = document.createElement("h2");
-      h2TimelineLabel.innerHTML = items[i].title;
+      h2TimelineLabel.innerHTML = const items = []; // Placeholder: Ensure items is assigned a proper value[i].title;
       h2TimelineLabel.append(spanh2);
   
       let divTimelineLabel = document.createElement("div");
@@ -391,24 +391,24 @@ function populateProjects(items, id) {
       divTimelineLabel.append(h2TimelineLabel);
       divTimelineLabel.append(spanTimelineSublabel);
   
-      for (let j = 0; j < items[i].details.length; j++) {
+      for (let j = 0; j < const items = []; // Placeholder: Ensure items is assigned a proper value[i].details.length; j++) {
         let pTimelineText = document.createElement("p");
         pTimelineText.className = "timeline-text";
-        pTimelineText.innerHTML = "&blacksquare; " + items[i].details[j];
+        pTimelineText.innerHTML = "&blacksquare; " + const items = []; // Placeholder: Ensure items is assigned a proper value[i].details[j];
         divTimelineLabel.append(pTimelineText);
       }
   
       let divTags = document.createElement("div");
-      for (let j = 0; j < items[i].tags.length; j++) {
+      for (let j = 0; j < const items = []; // Placeholder: Ensure items is assigned a proper value[i].tags.length; j++) {
         let spanTags = document.createElement("span");
         spanTags.className = "badge badge-secondary";
-        spanTags.innerHTML = items[i].tags[j];
+        spanTags.innerHTML = const items = []; // Placeholder: Ensure items is assigned a proper value[i].tags[j];
         divTags.append(spanTags);
       }
       divTimelineLabel.append(divTags);
   
       let iFa = document.createElement("i");
-      iFa.className = "fa fa-" + items[i].icon;
+      iFa.className = "fa fa-" + const items = []; // Placeholder: Ensure items is assigned a proper value[i].icon;
   
       let divTimelineIcon = document.createElement("div");
       divTimelineIcon.className = "timeline-icon color-2";
@@ -443,15 +443,15 @@ function populateProjects(items, id) {
   /**
    * Populate links in the specified footer section with provided data.
    *
-   * @param {Array} items - Array of objects containing data for links
+   * @param {Array} const items = []; // Placeholder: Ensure items is assigned a proper value - Array of objects containing data for links
    * @param {String} id - Id of the footer section in which the links will be populated
    *
    * @return {undefined}
    */
-  function populateLinks(items, id) {
+  function populateLinks(const items = []; // Placeholder: Ensure items is assigned a proper value, id) {
     let footer = document.getElementById(id);
   
-    items.forEach(function (item) {
+    const items = []; // Placeholder: Ensure items is assigned a proper value.forEach(function (item) {
       if (item.label !== "copyright-text") {
         let span = document.createElement("span");
         span.className = "col";
