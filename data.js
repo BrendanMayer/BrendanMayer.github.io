@@ -44,15 +44,15 @@ export const skills = [
      title: "IDE",
      skillName: "VS Code, Visual Studio 2022, Clion, Intellij Idea",
      color: "6",
-     percentage: "70",
+     percentage: "75",
    },
 ];
 
 export const projects = {
   currentProject: [
     {
-      projectName: "ChatGPT Generated Procedural Dialogue in Unity",
-      image: "images/programmingdiaries.png",
+      projectName: "Climb The Ladder (ChatGPT Generated Procedural Dialogue in Unity)",
+      image: "images/ClimbTheLadderLogo.png",
       summary:
         "A Game Developed in Unity that integrates ChatGPT Responses and Prompting through speech to text in order to generate procedural dialogue between NPCS",
       preview: "https://github.com/BrendanMayer/Got-A-Job",
