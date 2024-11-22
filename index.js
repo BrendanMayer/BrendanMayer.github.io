@@ -170,6 +170,8 @@ populateProjects(webProjects, "web-projects");
 populateProjects(softwareProjects, "software-projects");
 populateProjects(androidProjects, "android-projects");
 populateProjects(gameDevProjects, "gameDev-projects");
+populateExp_Edu(education, "education");
 
+populateLinks(footer, "footer");
 fetchBlogsFromMedium(medium);
 fetchGitConnectedData(gitConnected);
