@@ -141,7 +141,39 @@ import { URLs } from './user-data/urls.js';
    * @returns {void}
    */
   
-  function populateProjects(items, id) { console.log('Projects loaded:', items);
+  
+function populateProjects(items, id) {
+    console.log(`Populating projects for ${id}`, items);
+    let projectdesign = document.getElementById(id);
+
+    items.forEach(({ projectName, image, summary, techStack }) => {
+        const card = document.createElement("li");
+        card.className = "project-card";
+
+        // Add project name
+        const nameHeading = document.createElement("h3");
+        nameHeading.className = "project-name";
+        nameHeading.textContent = projectName;
+
+        // Add project image
+        const img = document.createElement("img");
+        img.className = "project-image img-fluid";
+        img.src = image;
+        img.alt = projectName;
+
+        // Add project description
+        const description = document.createElement("p");
+        description.className = "project-description";
+        description.textContent = summary;
+
+        // Combine all elements
+        card.appendChild(nameHeading);
+        card.appendChild(img);
+        card.appendChild(description);
+        projectdesign.appendChild(card);
+    });
+}
+ console.log('Projects loaded:', items);
     console.log(`Populating projects for ${id}`, items); 
     let projectdesign = document.getElementById(id);
   
