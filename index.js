@@ -8,7 +8,7 @@ import {
 
 import { URLs } from './user-data/urls.js';
   
-  const {currentProject, webProjects, softwareProjects, androidProjects, freelanceProjects } =
+  const {currentProject, webProjects, softwareProjects, androidProjects, gameDevProjects } =
     projects;
   const { medium, gitConnected } = URLs;
   

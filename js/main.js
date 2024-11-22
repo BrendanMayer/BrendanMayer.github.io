@@ -328,3 +328,5 @@ if (typeof $.fn.stick_in_parent === 'function') {
 } else {
     console.error('Sticky Kit plugin not loaded');
 }
+
+populateExp_Edu(education, 'education');
