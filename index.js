@@ -243,7 +243,7 @@ function populateProjects(items, id) {
         projectdesign.append(hr.cloneNode(true));
       }
     }
-  }
+  
   
   /**
    * Creates and populates a list of blog posts with specified properties
