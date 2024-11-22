@@ -137,7 +137,7 @@ export const projects = {
       techStack: ["JAVA", "XML", "Android"],
     },
   ],
-  freelanceProjects: [
+  gameDevProjects: [
     {
       projectName: "SnylloAir.com",
       image: "images/snylloair.png",

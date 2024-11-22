@@ -89,7 +89,7 @@ import { URLs } from './user-data/urls.js';
    * @returns {void}
    */
   
-  function populateBio(items, id) {
+  function populateBio(items, id) { console.log('Bio loaded:', items);
     const bioTag = document.getElementById(id);
     items.forEach((bioItem) => {
       const p = getElement("p", null);
@@ -109,7 +109,7 @@ import { URLs } from './user-data/urls.js';
    * @returns {void}
    */
   
-  function populateSkills(items, id) {
+  function populateSkills(items, id) { console.log('Skills loaded:', items);
     const skillsTag = document.getElementById(id);
     items.forEach(({ skillName, color, percentage }) => {
       const h3 = getElement("h3", null);
@@ -141,7 +141,7 @@ import { URLs } from './user-data/urls.js';
    * @returns {void}
    */
   
-  function populateProjects(items, id) {
+  function populateProjects(items, id) { console.log('Projects loaded:', items);
     console.log(`Populating projects for ${id}`, items); 
     let projectdesign = document.getElementById(id);
   
@@ -480,9 +480,18 @@ import { URLs } from './user-data/urls.js';
   populateProjects(webProjects, "web-projects");
   populateProjects(softwareProjects, "software-projects");
   populateProjects(androidProjects, "android-projects");
-  populateProjects(freelanceProjects, "freelance-projects");
+  populateProjects(gameDevProjects, "gameDev-projects");
   
   populateExp_Edu(education, "education");
   
   populateLinks(footer, "footer");
   
+
+const populateHighlightedProject = () => {
+    const highlightedProject = projects.currentProject[0];
+    document.getElementById('highlighted-project-name').innerText = highlightedProject.projectName;
+    document.getElementById('highlighted-image-1').src = highlightedProject.image;
+    document.getElementById('highlighted-image-2').src = highlightedProject.image; // Placeholder for second image
+    document.getElementById('highlighted-project-desc').innerText = highlightedProject.summary;
+};
+populateHighlightedProject();

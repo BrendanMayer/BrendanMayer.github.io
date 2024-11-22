@@ -1,3 +1,13 @@
+
+function populateBio(items, id) {
+    const bioTag = document.getElementById(id);
+    items.forEach((bioItem) => {
+        const p = document.createElement("p");
+        p.innerHTML = bioItem;
+        bioTag.appendChild(p);
+    });
+}
+console.log('Starting population logic');
 (function () {
   "use strict";
 
@@ -304,4 +314,17 @@ function detectDayNightMode() {
   } else {
     enableDarkMode();
   }
+}
+
+populateBio(bio, 'bio'); console.log('Bio populated');
+populateSkills(skills, 'skills'); console.log('Skills populated');
+populateProjects(projects.webProjects, 'web-projects'); console.log('Projects populated');
+populateProjects(projects.softwareProjects, 'software-projects');
+populateProjects(projects.androidProjects, 'android-projects');
+populateProjects(projects.gameDevProjects, 'gameDev-projects');
+// Ensure Sticky Kit is initialized
+if (typeof $.fn.stick_in_parent === 'function') {
+    $('#sticky_item').stick_in_parent();
+} else {
+    console.error('Sticky Kit plugin not loaded');
 }
