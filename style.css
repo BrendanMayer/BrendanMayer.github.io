@@ -1,9 +1,7 @@
 /* General Styles */
 body {
   font-family: 'Syne', serif; /* Apply Syne font */
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+  font-weight: 600;
   margin: 0;
   padding: 0;
   line-height: 1.6;
@@ -41,7 +39,7 @@ nav ul li {
   margin-left: 20px;
 }
 
-nav ul li a {
+nav a {
   color: #D7FCD4; /* Light color for text */
   text-decoration: none;
   font-weight: bold;
@@ -58,12 +56,13 @@ section {
 
 .home-section a {
   padding: 0.75rem;
-  background: #151515; /* Accent button color */
+  background: #152222; /* Accent button color */
   color: #D7FCD4; /* Dark text color for button */
   border: none;
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+  margin-top: 40px;
 }
 
 .home-section a:hover {
@@ -71,14 +70,22 @@ section {
 }
 /* Home Section */
 .home-section {
-  background: #151515; /* Slightly muted color for contrast */
+  background: #151515;
   text-align: center;
-  color: #D7FCD4; /* Light text color */
+  color: #D7FCD4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+  min-height: 20vh; /* Full viewport height */
+  padding: 2rem; /* Adds space inside the container */
 }
 
 .home-section h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .home-section p {
@@ -111,12 +118,17 @@ section {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   color: #D7FCD4; /* Accent color for heading */
+  
 }
 
 .projects-section h3 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #151515  ; /* Accent color for heading */
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: #D7FCD4 ; /* Accent color for heading */
+}
+
+.projects-section p {
+  font-size: 16px;
 }
 
 .project-grid {
@@ -132,7 +144,7 @@ section {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
-  color: #D7FCD4; /* Light color for text */
+  color: #151515; /* Light color for text */
   position: relative;
   overflow: hidden;
 }
@@ -147,7 +159,7 @@ section {
 }
 
 .project-card:hover {
-  background: #5D737E; /* Accent color on hover */
+  background: #D7FCD4; /* Accent color on hover */
 }
 
 .project-card:hover .details-button,
