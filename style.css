@@ -1,118 +1,259 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    color: #333;
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Navigation Bar */
-  nav {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-  }
-  
-  nav h1 {
-    margin: 0;
-    display: inline;
-  }
-  
-  nav ul {
-    list-style: none;
-    float: right;
-    margin: 0;
-  }
-  
-  nav ul li {
-    display: inline;
-    margin-left: 20px;
-  }
-  
-  nav ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  /* Sections */
-  section {
-    padding: 4rem 0;
-  }
-  
-  .home-section {
-    background: #f4f4f4;
-    text-align: center;
-  }
-  
-  .about-section {
-    background: #e2e2e2;
-  }
-  
-  .projects-section {
-    background: #f4f4f4;
-  }
-  
-  .contact-section {
-    background: #e2e2e2;
-  }
-  
-  /* Project Grid */
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-  }
-  
-  .project-card {
-    background: #fff;
-    padding: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .project-card img {
-    max-width: 100%;
-    border-radius: 5px;
-  }
-  
-  /* Contact Form */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  form input, form textarea {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  form button {
-    padding: 0.5rem;
-    background: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  form button:hover {
-    background: #555;
-  }
-  
-  /* Footer */
-  footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-  }
+  font-family: 'Syne', serif; /* Apply Syne font */
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #D7FCD4; /* Light color for text */
+  background: #151515; /* Dark background for body */
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Navigation Bar */
+nav {
+  background: #151515; /* Dark background */
+  color: #D7FCD4; /* Light color for text */
+  padding: 1rem 0;
+}
+
+nav h1 {
+  margin: 0;
+  display: inline;
+  color: #D7FCD4; /* Light accent color for title */
+}
+
+nav ul {
+  list-style: none;
+  float: right;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: #D7FCD4; /* Light color for text */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #D7FCD4; /* Accent color on hover */
+}
+
+/* Sections */
+section {
+  padding: 4rem 0;
+}
+
+.home-section a {
+  padding: 0.75rem;
+  background: #151515; /* Accent button color */
+  color: #D7FCD4; /* Dark text color for button */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.home-section a:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* Home Section */
+.home-section {
+  background: #151515; /* Slightly muted color for contrast */
+  text-align: center;
+  color: #D7FCD4; /* Light text color */
+}
+
+.home-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.home-section p {
+  font-size: 1.25rem;
+}
+
+/* About Section */
+.about-section {
+  background: #151515; /* Dark background */
+  color: #D7FCD4; /* Light green accent for text */
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  color: #151515; /* Accent color for heading */
+}
+
+.about-section p {
+  font-size: 1.25rem;
+}
+
+/* Projects Section */
+.projects-section {
+  background: #151515; /* Muted background */
+  color: #F4D6CC; /* Light text color */
+}
+
+.projects-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #D7FCD4; /* Accent color for heading */
+}
+
+.projects-section h3 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #151515  ; /* Accent color for heading */
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+/* Project Cards */
+.project-card {
+  background: #151515; /* Dark background for card */
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #D7FCD4; /* Light color for text */
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.project-card a {
+  color: #D7FCD4; /* Light text color for links */
+}
+
+.project-card:hover {
+  background: #5D737E; /* Accent color on hover */
+}
+
+.project-card:hover .details-button,
+.project-card:hover .hover-button {
+  color: #D7FCD4;
+  display: block;
+  background-color: #151515;
+}
+
+/* Contact Section */
+.contact-section {
+  background: #151515; /* Muted background */
+  color: #D7FCD4; /* Light text color */
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  color: #D7FCD4; /* Accent color for heading */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form input,
+form textarea {
+  padding: 0.75rem;
+  border: 1px solid #D7FCD4; /* Light border color */
+  border-radius: 5px;
+  background-color: #151515; /* Dark background for form fields */
+  color: #D7FCD4; /* Light text color for form fields */
+}
+
+form input:focus,
+form textarea:focus {
+  border: 1px solid #B8F2E6; /* Accent color on focus */
+}
+
+/* Footer */
+footer {
+  background: #151515; /* Dark background */
+  color: #D7FCD4; /* Light text color */
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Style for the project card */
+.project-card {
+  position: relative;
+}
+
+/* Initially hide the buttons */
+.hover-button, .details-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  padding: 10px 20px;
+  background-color: #2185d0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Position the 'Details' button above the 'View Project' button */
+.details-button {
+  top: 30%;
+}
+
+/* Position the 'View Project' button below */
+.hover-button {
+  top: 50%;
+}
+
+/* Show the buttons when hovering over the card */
+.project-card:hover .hover-button, 
+.project-card:hover .details-button {
+  display: block;
+}
+
+/* Black mask (with 60% opacity) over the image when hovering */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* 60% opacity black */
+  z-index: 5; /* Ensure the mask is below the buttons */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* When hovering over the card, make the mask visible */
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.image img {
+  width: 100%; /* Ensure the image covers the card */
+  height: auto;
+}
