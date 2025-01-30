@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-  font-family: 'Syne', serif; /* Apply Syne font */
+  font-family: 'Press Start 2P', cursive;
   font-weight: 600;
   margin: 0;
   padding: 0;
@@ -13,45 +13,77 @@ body {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+  font-family: 'Press Start 2P', cursive;
+
+}
+
+.header {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.column {
+  font-family: 'Press Start 2P', cursive;
+  
+}
+
+pixel {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  color: #151515;
 }
 
 /* Navigation Bar */
 nav {
   background: #151515; /* Dark background */
   color: #D7FCD4; /* Light color for text */
-  padding: 1rem 0;
+  padding: .1rem 0;
+  font-family: 'Press Start 2P', cursive;
+  position: sticky;
+  top: 0; /* Sticks the navbar to the top of the page */
+  z-index: 1000; /* Ensures it stays above other content */
 }
 
 nav h1 {
   margin: 0;
   display: inline;
   color: #D7FCD4; /* Light accent color for title */
+  font-family: 'Press Start 2P', cursive;
+  position: sticky;
 }
 
 nav ul {
   list-style: none;
   float: right;
   margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  position: sticky;
 }
 
 nav ul li {
   display: inline;
   margin-left: 20px;
+  font-family: 'Press Start 2P', cursive;
+  position: sticky;
 }
 
 nav a {
   color: #D7FCD4; /* Light color for text */
   text-decoration: none;
   font-weight: bold;
+  font-family: 'Press Start 2P', cursive;
+  position: sticky;
 }
 
 nav ul li a:hover {
   color: #D7FCD4; /* Accent color on hover */
+  font-family: 'Press Start 2P', cursive;
+  position: sticky;
 }
 
 /* Sections */
 section {
   padding: 4rem 0;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .home-section a {
@@ -63,10 +95,12 @@ section {
   cursor: pointer;
   font-weight: bold;
   margin-top: 40px;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .home-section a:hover {
   background-color: rgba(0, 0, 0, 0.5);
+  font-family: 'Press Start 2P', cursive;
 }
 /* Home Section */
 .home-section {
@@ -79,6 +113,7 @@ section {
   align-items: center; /* Centers content horizontally */
   min-height: 20vh; /* Full viewport height */
   padding: 2rem; /* Adds space inside the container */
+  font-family: 'Press Start 2P', cursive;
 }
 
 .home-section h2 {
@@ -86,31 +121,38 @@ section {
   margin-bottom: 1rem;
   font-style: italic;
   font-weight: bold;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .home-section p {
   font-size: 1.25rem;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* About Section */
 .about-section {
   background: #151515; /* Dark background */
   color: #D7FCD4; /* Light green accent for text */
+  font-family: 'Press Start 2P', cursive;
+
 }
 
 .about-section h2 {
   font-size: 2.5rem;
   color: #151515; /* Accent color for heading */
+  font-family: 'Press Start 2P', cursive;
 }
 
 .about-section p {
   font-size: 1.25rem;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Projects Section */
 .projects-section {
   background: #151515; /* Muted background */
   color: #F4D6CC; /* Light text color */
+  font-family: 'Press Start 2P', cursive;
 }
 
 .projects-section h2 {
@@ -118,23 +160,27 @@ section {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   color: #D7FCD4; /* Accent color for heading */
+  font-family: 'Press Start 2P', cursive;
   
 }
 
 .projects-section h3 {
-  font-size: 4rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #D7FCD4 ; /* Accent color for heading */
+  color: #151515 ; /* Accent color for heading */
+  font-family: 'Press Start 2P', cursive;
 }
 
 .projects-section p {
   font-size: 16px;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Project Cards */
@@ -147,19 +193,23 @@ section {
   color: #151515; /* Light color for text */
   position: relative;
   overflow: hidden;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .project-card img {
   max-width: 100%;
   border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .project-card a {
   color: #D7FCD4; /* Light text color for links */
+  font-family: 'Press Start 2P', cursive;
 }
 
 .project-card:hover {
   background: #D7FCD4; /* Accent color on hover */
+  font-family: 'Press Start 2P', cursive;
 }
 
 .project-card:hover .details-button,
@@ -167,23 +217,27 @@ section {
   color: #D7FCD4;
   display: block;
   background-color: #151515;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Contact Section */
 .contact-section {
   background: #151515; /* Muted background */
   color: #D7FCD4; /* Light text color */
+  font-family: 'Press Start 2P', cursive;
 }
 
 .contact-section h2 {
   font-size: 2.5rem;
   color: #D7FCD4; /* Accent color for heading */
+  font-family: 'Press Start 2P', cursive;
 }
 
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  font-family: 'Press Start 2P', cursive;
 }
 
 form input,
@@ -193,11 +247,13 @@ form textarea {
   border-radius: 5px;
   background-color: #151515; /* Dark background for form fields */
   color: #D7FCD4; /* Light text color for form fields */
+  font-family: 'Press Start 2P', cursive;
 }
 
 form input:focus,
 form textarea:focus {
   border: 1px solid #B8F2E6; /* Accent color on focus */
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Footer */
@@ -206,11 +262,13 @@ footer {
   color: #D7FCD4; /* Light text color */
   text-align: center;
   padding: 1rem 0;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Style for the project card */
 .project-card {
   position: relative;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Initially hide the buttons */
@@ -228,22 +286,26 @@ footer {
   text-align: center;
   cursor: pointer;
   z-index: 10;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Position the 'Details' button above the 'View Project' button */
 .details-button {
   top: 30%;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Position the 'View Project' button below */
 .hover-button {
   top: 50%;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Show the buttons when hovering over the card */
 .project-card:hover .hover-button, 
 .project-card:hover .details-button {
   display: block;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Black mask (with 60% opacity) over the image when hovering */
@@ -258,14 +320,22 @@ footer {
   z-index: 5; /* Ensure the mask is below the buttons */
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* When hovering over the card, make the mask visible */
 .project-card:hover::before {
   opacity: 1;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.project-card .header {
+  font-family: 'Press Start 2P', cursive;  /* Make sure the right font is applied */
 }
 
 .image img {
   width: 100%; /* Ensure the image covers the card */
   height: auto;
+  font-family: 'Press Start 2P', cursive;
+
 }
