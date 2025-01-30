@@ -220,6 +220,47 @@ section {
   font-family: 'Press Start 2P', cursive;
 }
 
+
+.blogs-section {
+  background: #151515; /* Muted background */
+  color: #F4D6CC; /* Light text color */
+  font-family: 'Press Start 2P', cursive;
+}
+
+.blogs-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #D7FCD4; /* Accent color for heading */
+  font-family: 'Press Start 2P', cursive;
+  
+}
+
+.blogs-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #151515 ; /* Accent color for heading */
+  font-family: 'Press Start 2P', cursive;
+}
+
+.blogs-section p {
+  font-size: 16px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.blogs-section a {
+  padding: 0.75rem;
+  background: #D7FCD4;/* Accent button color */
+  color: #151515; /* Dark text color for button */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 40px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+
 /* Contact Section */
 .contact-section {
   background: #151515; /* Muted background */
