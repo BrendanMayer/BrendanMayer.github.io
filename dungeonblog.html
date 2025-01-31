@@ -31,14 +31,14 @@
       <!-- Blog Title and Meta -->
       <h2>Dungeon Odyssey: Procedurally Generated Dungeon with Connected Rooms, Hallways and Verticality</h2>
       <div class="ui meta">
-        <span class="date">29/01/2025</span> <!-- Add the date of the post -->
+        <span class="date">31/01/2025</span> <!-- Add the date of the post -->
       </div>
       <img src="images/dungeon.png" alt="Header Image" class="header-image">
 
       <!-- Blog Content -->
       <div class="ui segment">
         <p>
-          Dungeon Odyssey was a University assignment made in my 3rd year of studying Computer Science. The project is a prototype for a 3D Survival Game in which the player
+          Dungeon Odyssey was a 3D game dev assignment made in my 3rd year of studying Computer Science. The project is a prototype for a 3D Survival Game in which the player
            must make their way through a procedurally generated dungeon and find the exit whilst facing enemies.
            
         </p>
@@ -50,7 +50,7 @@
         <p>
             As stated above, this is a prototype for a survival dungeon crawler game. I wanted some roguelike elements as well to learn as much as possible
              so I also included a skill system for some even more replayability on top of the procedurally generated dungeons.
-             The Project builds off of what was taught in the "Procedural Dungeons in Unity" Udemy Course by ____INSERT NAME____.
+             The Project builds off of what was taught in the "Procedural Dungeons in Unity" Udemy Course by Billy McDaniel.
         </p>
       </div>
 
@@ -78,76 +78,57 @@
           </div>
       </div>
 
-      <div class="ui segment">
-        <h3>Why ChatGPT NPC's? Where Did The Idea Come From?</h3>
-        <p>The main inspiration behind this project came long before the planning phase for my final year project. This draws heavy inspiration from a video on youtube posted by Tamulur in 2023 titled "ChatGPT-driven NPC Experiment", in which he showcases a seemingly real conversation in a medieval tavern by integrating ChatGPT NPC's in a VR scene. At the time since AI was fairly new, this blew my mind and I wondered
-          where this could go in the future. Would all NPC's in games be this "smart" and able to communicate? Nearing the end of the year a game called "Suck Up!" was then released which shares a similar vision for this project, where the player is a vampire and must converse with NPC's (which also use AI generated dialogue) and convince them to let you into their house so you can suck their blood.
-        This, along with the many improvements with AI chat bots, made me genuinely curious about this style of immersive games which led me to this project now.</p>
-      </div>
-
       <!-- How It Works -->
       <div class="ui segment">
         <h3>How It Works</h3>
         <p>
           The Procedural Generation is branch based in this instance where each path is generated one at a time with rooms and hallways instead of randomly placing rooms with a noise or binary based algorithm and connection hallways after the fact. This approach allows for a lot of
-          fine tuning for dungeon and path sizes and allows a bit of flexibility in the generation. So how does it actually generate? To put it simply, its similar to a tilemap.
+          fine tuning for dungeon and path sizes and allows a bit of flexibility in the generation. So how does it actually generate? To put it simply, its similar to a tilemap. The generator first starts with the main branch and once completed, moves onto any possible side branches that can be generated.
           
         </p>
         <p>
-          There are 7 types of prefabs or "tile pieces" I can use. The starting room, exit room, normal rooms, hallways, stairs, doors and a wall. I can have as many variants which are picked at random for each type of tile piece for a seemingly infinite amount of variation
-          through each playthrough. Each tile has at least one "connector" with an open space for either another piece to be attached to or a wall to be put in its place. The starting room is where the player spawns and also the starting point for the dungeon generation. The exit room is how the player can escape the dungeon and is denoted by a portal at the centre, this is also the ending point of the "Main Branch" in the dungeon.
-          Normal rooms are where the player can find loot or where enemies can spawn throughout the dungeon and are the main tile pieces. Hallways are used to connect rooms together as well as stair pieces.
-          spawns.
+          There are 7 types of prefabs or "tile pieces" I used but this can be expanded to the desired amount so long that the tile prefab has a corresponding connector (an object at an opening where two pieces or a wall can connect that stores position to place the next piece as well as a connection status such as "connected"). The starting room, exit room, normal rooms, hallways, stairs, doors and wall prefabs are what I included in this prototype. I can have as many variants which are picked at random for each type of tile piece for a seemingly infinite amount of variation
+          through each playthrough. The starting room is where the player spawns and also the starting point for the dungeon generation. The exit room is how the player can escape the dungeon and is denoted by a portal at the centre, this is also the ending point of the "Main Branch" in the dungeon.
+          Normal rooms are where the player can find loot or where enemies can spawn throughout the dungeon and are the main tile pieces. Hallways are used to connect rooms together as well as stair pieces which provides verticality to the dungeon generation.
         </p>
-        <p>As well as this, the task system also plays a role in the dialogue. This means that any tasks completed are referenced by and to ChatGPT during the loading phase and gameplay. This gives the NPC more context about the environment and player and allows for conversations based around the players actions.</p>
+        <p>Once two pieces have been connected, their corresponded connectors are then set to "connected" meaning no other pieces can be connected to these pieces. These "connected" connectors can spawn doors on them which can be opened and also blocking the view of further branches from the player.
+          Any connectors which are not marked as "connected" are then filled with a solid wall which will block off redundant paths or openings where a branch did not generate (eg. a room with 2-3 openings but only one has a connecting path leaving the other 2 open to nothing).
+          The generator is also highly customizable with different generation settings such as door spawn chance, branch lengths, branch amounts to list a few giving dynamic difficulty and larger dungeons being generated as the player progresses a liable option. 
+        </p>
       </div>
       
-      <img src="images/traits.png" alt="Unity ChatGPT Integration" class="header-image">
-      
+
       <div class="ui segment">
-        <h3>State Machines</h3>
+        <h3>Collision of Tile Pieces?</h3>
         <p>
-          To keep everything organized and performant, all the player and NPC actions are handled using finite state machines. This allows for specific actions whether that be a function call or animation transition to only happen once the NPC or player is in the respective "state". This allows for singling out scripts and lines of code that would otherwise be running in the background when it isnt doing anything, thus increasing performance.
-          The real reason I chose finite state machines though is because they are easier to manage than a single script that does everything. Once the State Machine is built, I can create as many states as I want as I need them. The seperated scripts makes it a lot easier to find lines of code specific to a state rather than taking time to scroll through a larger script.
+            Colliding of rooms becomes a big issue if you have tile pieces that have open connectors in different directions such as an intersection room or L shaped hallways. To counter this, each room has a box collider which detects any overlapping collisions with other rooms.
+            If a collision occurs, the tile piece is then destroyed and a different piece is attempted to generate instead. This repeats a number of times until either a piece fits with no collisions, or a threshold is reached and the current branch generation is skipped and moved onto the next possible branch.
+            The addition of verticality also helps to reduce collisions as much as possible as there are rare instances where smaller dungeons are generated due to many branches being cut off during the collision checking process. This is partly due to the size of the rooms and hallway shapes as the amount of variant types I used as well. I believe if i had more hallway variants that were more likely to be chosen over rooms then less collisions would occur since when a tile is generated, it is picked by random out of all different prefab types. 
         </p>
       </div>
-
-      <img src="images/statemachine.png" alt="State Machine Diagram" class="header-image">
-
+     
       <div class="ui segment">
-        <p>Above shows a few of the states for the player state machine. I include two super states, "Grounded" and "Air", which allow me to seperate the players actions by state instead of the conventional if statement checks. In this case, the states inside of the grounded state can only be accessed if the player is in the grounded state, if the player jumps and enters the air state, all code and actions stop running until the player returns for the grounded state. The use case here is not only performance but I didn't want the players to be able to interact with objects or NPC's whilst they were in the air.</p>
-      </div>
-
-      <!-- Challenges Faced -->
-      <div class="ui segment">
-        <h3>Challenges Faced</h3>
+        <h3>Performance of the Generation</h3>
         <p>
-          One of the biggest challenges was integrating the ChatGPT API with Unity in real-time. Additionally, ensuring that the voice recognition system accurately captured and processed user input required extensive testing and fine-tuning to properly be integrated with ChatGPT, since the voice clip is recorded, transcribed into text and then sent through a https request as a message to ChatGPT. I ended up going with the mini04 model for ChatGPT as it was relatively quick in its responses and also cost efficient.
+            The generator is quite performant when generating small to medium dungeon sizes, however, once a larger dungeon is generated there is a performance drop since there is a lot of recursion when looping over each valid connector and collision checking. However, there is a dungeon build speed included which allows the 
+            dungeon to generate slower or faster for more or less performance. The quickest speed is so fast however, that the generation happens in less than a few seconds and is not even noticable when the dungeon is generating. If a short intermission screen is showing before loading the scene, the transition from the menu to gameplay would be seemless and only take a few seconds for everything to load.
 
-        </p>
-      </div>
-
-      <!-- Results -->
-      <div class="ui segment">
-        <h3>Results</h3>
-        <p>
-          The final product in theory is a fully functional prototype where players can have dynamic conversations with NPCs. The system is scalable in the number of ChatGPT instances running, since the number of requests is relatively low due to the transcribing time of the voice recognition as well as the fact that the player can only interact with one NPC at a time. At the time of writing this blog post, most systems are in place and this ending piece will be updated upon submition of the project.
-        </p>
-      </div>    
+      </div> 
 
       <!-- Future Work -->
       <div class="ui segment">
-        <h3>Future Work</h3>
+        <h3>Could I Make a Game Out of This Prototype?</h3>
         <p>
-          If I had an infinite of time to work on this project, there is a lot I would add. One thing I chose to leave out was a skill system in which the player can earn points and use them to unlock skills that will enhance the gameplay but also offering more dynamic difficult options.
-          <p>I wouldve also integrated a previous Procedural generation model I had made which can generate a 3D dungeon with connecting paths, using this to build unique office block levels that would be completely random and offer more playability</p>
+          I can say confidently this system and prototype as a whole has an abundance of potention for a full, playable game. I may even return to it in the future and add a full game loop. There is much that needs to be improved with the generation system however to ensure flawless generation every time but with enough tinkering
+          it is definitely able to perform well in a full game. The skill system I created is much to be desired when I compare it to what I am capable of creating with the skills and knowledge I possess now so I would most likely revamp that whole system. I had a lot of plans that fell out of scope for the original project
+          which I would like to add as well such as a shop and equipment system.
         </p>
       </div>
 
       <!-- GitHub Link -->
       <div class="ui segment">
         <p>
-          If you're interested in learning more about this project, check out the <a href="https://github.com/BrendanMayer/ClimbTheLadder" target="_blank">GitHub repository</a>.
+          Hopefully in the future I can give an update about a newer version of this project with all the additions and improvements mentioned above! Any updates will be found in the blog section!
         </p>
       </div>
     </div>
