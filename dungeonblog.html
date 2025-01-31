@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/profilepic.png">
+  <title>Project Blog Post - Brendan Mayer</title>
+  <!-- Google Fonts - Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
+  <!-- Link to Semantic UI CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <link rel="stylesheet" href="blogstyle.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="ui container">
+      <h1>Brendan Mayer</h1>
+      <ul class="nav">
+        <a href="index.html">Back To Main Page</a> 
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Blog Post Section -->
+  <section id="blog-post" class="blog-post-section">
+    <div class="ui container">
+      <!-- Blog Title and Meta -->
+      <h2>Dungeon Odyssey: Procedurally Generated Dungeon with Connected Rooms, Hallways and Verticality</h2>
+      <div class="ui meta">
+        <span class="date">29/01/2025</span> <!-- Add the date of the post -->
+      </div>
+      <img src="images/dungeon.png" alt="Header Image" class="header-image">
+
+      <!-- Blog Content -->
+      <div class="ui segment">
+        <p>
+          Dungeon Odyssey was a University assignment made in my 3rd year of studying Computer Science. The project is a prototype for a 3D Survival Game in which the player must make their way through a procedurally generated dungeon and find the exit whilst facing enemies.
+        </p>
+      </div>
+
+      <!-- Project Overview -->
+      <div class="ui segment">
+        <h3>Project Overview</h3>
+        <p>
+          
+        </p>
+      </div>
+
+      <!-- Technologies Used -->
+      <div class="ui segment">
+        <h3>Technologies Used</h3>
+        <div class="ui list">
+          <div class="item">
+            <i class="code icon"></i>
+            <div class="content">
+              Unity: The game engine used to build the project.
+            </div>
+          </div>
+          <div class="item">
+            <i class="code icon"></i>
+            <div class="content">
+              ChatGPT API: For generating procedural dialogue.
+            </div>
+          </div>
+          <div class="item">
+            <i class="code icon"></i>
+            <div class="content">
+              Voice Recognition: To allow players to speak their inputs which is transcribed through the Whisper API.
+            </div>
+          </div>
+          <div class="item">
+            <i class="code icon"></i>
+            <div class="content">
+              C#: The programming language used for scripting in Unity.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui segment">
+        <h3>Why ChatGPT NPC's? Where Did The Idea Come From?</h3>
+        <p>The main inspiration behind this project came long before the planning phase for my final year project. This draws heavy inspiration from a video on youtube posted by Tamulur in 2023 titled "ChatGPT-driven NPC Experiment", in which he showcases a seemingly real conversation in a medieval tavern by integrating ChatGPT NPC's in a VR scene. At the time since AI was fairly new, this blew my mind and I wondered
+          where this could go in the future. Would all NPC's in games be this "smart" and able to communicate? Nearing the end of the year a game called "Suck Up!" was then released which shares a similar vision for this project, where the player is a vampire and must converse with NPC's (which also use AI generated dialogue) and convince them to let you into their house so you can suck their blood.
+        This, along with the many improvements with AI chat bots, made me genuinely curious about this style of immersive games which led me to this project now.</p>
+      </div>
+
+      <!-- How It Works -->
+      <div class="ui segment">
+        <h3>How It Works</h3>
+        <p>
+          This project integrates scrnalts Unity to OpenAI API Unity Package which communicates with ChatGPT and Whisper through HTTPS requests. The main problem to solve was the context-driven dialogue returned from ChatGPT. I needed a reference to the character that ChatGPT would be portraying as well as the game world and actions the player takes throughout the game loop.
+        </p>
+        <p>
+          To do this, I created a personality system using Unity's Scriptable Objects which store data about the character's personality such as likes, dislikes, name, occupation, etc. Through this, a loading message is then sent to each ChatGPT instance on an NPC upon interaction. This loading message includes the personality data and allows for context-driven dialogue.
+        </p>
+        <p>As well as this, the task system also plays a role in the dialogue. This means that any tasks completed are referenced by and to ChatGPT during the loading phase and gameplay. This gives the NPC more context about the environment and player and allows for conversations based around the players actions.</p>
+      </div>
+      
+      <img src="images/traits.png" alt="Unity ChatGPT Integration" class="header-image">
+      
+      <div class="ui segment">
+        <h3>State Machines</h3>
+        <p>
+          To keep everything organized and performant, all the player and NPC actions are handled using finite state machines. This allows for specific actions whether that be a function call or animation transition to only happen once the NPC or player is in the respective "state". This allows for singling out scripts and lines of code that would otherwise be running in the background when it isnt doing anything, thus increasing performance.
+          The real reason I chose finite state machines though is because they are easier to manage than a single script that does everything. Once the State Machine is built, I can create as many states as I want as I need them. The seperated scripts makes it a lot easier to find lines of code specific to a state rather than taking time to scroll through a larger script.
+        </p>
+      </div>
+
+      <img src="images/statemachine.png" alt="State Machine Diagram" class="header-image">
+
+      <div class="ui segment">
+        <p>Above shows a few of the states for the player state machine. I include two super states, "Grounded" and "Air", which allow me to seperate the players actions by state instead of the conventional if statement checks. In this case, the states inside of the grounded state can only be accessed if the player is in the grounded state, if the player jumps and enters the air state, all code and actions stop running until the player returns for the grounded state. The use case here is not only performance but I didn't want the players to be able to interact with objects or NPC's whilst they were in the air.</p>
+      </div>
+
+      <!-- Challenges Faced -->
+      <div class="ui segment">
+        <h3>Challenges Faced</h3>
+        <p>
+          One of the biggest challenges was integrating the ChatGPT API with Unity in real-time. Additionally, ensuring that the voice recognition system accurately captured and processed user input required extensive testing and fine-tuning to properly be integrated with ChatGPT, since the voice clip is recorded, transcribed into text and then sent through a https request as a message to ChatGPT. I ended up going with the mini04 model for ChatGPT as it was relatively quick in its responses and also cost efficient.
+
+        </p>
+      </div>
+
+      <!-- Results -->
+      <div class="ui segment">
+        <h3>Results</h3>
+        <p>
+          The final product in theory is a fully functional prototype where players can have dynamic conversations with NPCs. The system is scalable in the number of ChatGPT instances running, since the number of requests is relatively low due to the transcribing time of the voice recognition as well as the fact that the player can only interact with one NPC at a time. At the time of writing this blog post, most systems are in place and this ending piece will be updated upon submition of the project.
+        </p>
+      </div>    
+
+      <!-- Future Work -->
+      <div class="ui segment">
+        <h3>Future Work</h3>
+        <p>
+          If I had an infinite of time to work on this project, there is a lot I would add. One thing I chose to leave out was a skill system in which the player can earn points and use them to unlock skills that will enhance the gameplay but also offering more dynamic difficult options.
+          <p>I wouldve also integrated a previous Procedural generation model I had made which can generate a 3D dungeon with connecting paths, using this to build unique office block levels that would be completely random and offer more playability</p>
+        </p>
+      </div>
+
+      <!-- GitHub Link -->
+      <div class="ui segment">
+        <p>
+          If you're interested in learning more about this project, check out the <a href="https://github.com/BrendanMayer/ClimbTheLadder" target="_blank">GitHub repository</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="ui container">
+      <p>&copy; 2025 Brendan Mayer. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Link to Semantic UI JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
