@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>BRNDN.dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body class="scanlines">
+  <div class="headerbar">
+    <div class="container nav">
+      <a class="brand" href="/">▶︎ BRNDN.dev</a>
+      <ul>
+        <li><a  href="/">Home</a></li>
+        <li><a style="text-decoration:underline" href="/blog/">Blog</a></li>
+        <li><a  href="/projects/">Projects</a></li>
+        <li><a  href="/about/">About</a></li>
+        <li><a  href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+
+<article class="prose">
+  <h1>Experimenting with Unity's Editor Code to create an Item registry and Inventory System</h1>
+  <p><span class="tag">Unity</span> <span class="tag">C#</span> <span class="tag">Editor Tools</span> &nbsp; • &nbsp; <strong>08 October 2025</strong></p>
+
+  <!-- <figure style="margin:16px 0 24px">
+    <img src="/assets/images/Logo.png" alt="Climb The Ladder cover">
+  </figure> -->
+
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experimenting with Unity’s Editor Code to Create an Item Registry and Inventory System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body class="scanlines">
+  <div class="headerbar">
+    <div class="container nav">
+      <a class="brand" href="/">▶︎ BRNDN.dev</a>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a style="text-decoration:underline" href="/blog/">Blog</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+    <article class="prose">
+      <h1>Experimenting with Unity’s Editor Code to Create an Item Registry and Inventory System</h1>
+      <p>
+        <span class="tag">Unity</span>
+        <span class="tag">C#</span>
+        <span class="tag">Editor Tools</span>
+        &nbsp; • &nbsp; <strong>08 Oct 2025</strong>
+      </p>
+
+      <p>
+        Over the past week I’ve been playing around with Unity’s editor scripting tools, not just to automate tasks,
+        but to actually <em>design</em> a workflow for creating and managing in-game items.
+        What started as a small experiment turned into a full-on editor extension with its own registry,
+        item validator, and a wizard for creating new items with unique IDs.
+        Honestly, I didn’t expect to enjoy writing editor code this much.
+      </p>
+
+      <h2>The idea</h2>
+
+      <p>
+        I wanted a clean way to manage a bunch of <code>ItemData</code> assets for a project, each with an ID, name,
+        description, and optionally a prefab if it’s placeable.
+        Doing it manually meant endless right-clicks and duplicated IDs, so I figured,
+        why not let Unity handle it for me?
+      </p>
+
+      <p>
+        That’s where the <strong>Item Creator Wizard</strong> came in.
+        It’s a simple EditorWindow that creates the folders, assigns IDs, and saves the asset in the right place,
+        all with one button click.
+        It even creates the registry if it doesn’t exist.
+      </p>
+
+      <figure>
+        <img src="/assets/images/tilefrenzy.png" alt="Unity editor item wizard UI preview">
+      </figure>
+
+      <h2>The registry system</h2>
+
+      <p>
+        Every item in the game needs a unique ID.
+        Instead of manually assigning one, which, when I first created the item object, felt very tedious and time consuming. To mitigate the monotony I built a <strong>registry asset</strong> called
+        <code>ItemIdRegistry</code>.
+        It just holds a list of used IDs, but that small step eliminates a lot of potential human error.
+      </p>
+
+      <p>
+        Whenever you create an item through the wizard, it either pulls the next free ID from the registry or checks
+        if the one you’ve manually entered already exists.
+        If there’s a conflict, it politely asks whether you’d like to use the next free one instead,
+        a little quality-of-life thing that makes development feel smoother and avoids errors and overlapping items in the registry.
+      </p>
+
+      <figure>
+        <img src="/assets/images/traits.png" alt="Item registry code diagram">
+      </figure>
+
+      <h2>Validation tools</h2>
+
+      <p>
+        Once you start generating dozens of items, mistakes happen or when there are wrong folder names, missing prefabs, or
+        inconsistent file paths.
+        That’s where the <strong>Item Validator</strong> comes in.
+        It scans through <code>Assets/Resources/Items</code> and checks every <code>ItemData</code> against a few simple rules:
+      </p>
+
+      <ul>
+        <li>Folder name matches the item name</li>
+        <li>Each item has a valid non-zero ID</li>
+        <li>Placeable items have prefabs assigned</li>
+        <li>File paths match the expected structure</li>
+      </ul>
+
+      <p>
+        When something’s off, it just lists the issues in a scroll view, nothing fancy,
+        but it’s fast and prevents a ton of small bugs later down the road.
+      </p>
+
+      <figure>
+        <img src="/assets/images/statemachine.png" alt="Unity Editor validation window">
+      </figure>
+
+      <h2>Editor utilities</h2>
+
+      <p>
+        I also added a few handy menu options under <code>Tools/Items/</code>
+        one to rescan and rebuild the registry, and another to open it directly in the inspector.
+        This lets me update IDs across the entire project with one click,
+        which is great after refactors or when importing items from another branch.
+      </p>
+
+      <figure>
+        <img src="/assets/images/Logo.png" alt="Unity menu tools screenshot">
+      </figure>
+
+      <h2>What I learned</h2>
+
+      <p>
+        Before this, I mostly thought of editor scripts as debugging helpers,
+        but writing full tools that integrate with Unity’s workflow feels surprisingly empowering.
+        Things like <code>MenuItem</code>, <code>EditorGUILayout</code>, and <code>AssetDatabase</code>
+        are way more approachable once you dive in — and they unlock all kinds of automation possibilities.
+      </p>
+
+      <p>
+        It’s also a nice reminder that game tools don’t have to be big or flashy to be valuable.
+        A small window that saves ten clicks per asset ends up saving hours across a project.
+      </p>
+
+      <h2>What’s next?</h2>
+
+      <p>
+        As of writing this I have already integrated a working 
+        <strong>inventory system</strong> — something that can read the IDs and load items dynamically at runtime through a custom debug terminal I have implemented.
+        I've also implemented the same system for containers. Next I plan to accurately save items in these containers in the inventory in a bundled save file that would
+        be ideal for <strong>Steam Cloud Integration.</strong>
+      </p>
+
+      <p>
+        Overall, this was one of those “small side experiments” that I really enjoyed creating.
+        Writing custom tools is almost like creating small developer friendly mods in Unity itself, which to me is very fun.
+      </p>
+    </article>
+
+    <div class="footer">© 2025 • Game Dev Neon theme • GitHub Pages ready</div>
+  </div>
+
+  <script src="/assets/main.js"></script>
+</body>
+</html>
