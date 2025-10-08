@@ -25,7 +25,7 @@
   <div class="container">
 
 <article class="prose">
-  <h1>Dungeon Odyssey — Branch‑Based Procedural Dungeons</h1>
+  <h1>Dungeon Odyssey, Branch‑Based Procedural Dungeons</h1>
   <p><span class="tag">Unity</span> <span class="tag">C#</span> <span class="tag">Procedural Gen</span> &nbsp; • &nbsp; <strong>31 Jan 2025</strong></p>
 
   <figure style="margin:16px 0 24px">
@@ -42,18 +42,18 @@
   and shape easy to tune.</p>
 
   <h2>Tile pieces</h2>
-  <p>I use seven prefab types—start, exit, room, hallway, stairs, door, wall—each with <strong>connectors</strong> that mark openings.
+  <p>I use seven prefab types, start, exit, room, hallway, stairs, door, wall, each with <strong>connectors</strong> that mark openings.
   Pieces connect by matching connectors; once joined, both ends are flagged “connected”. Unused openings get a wall. Random
   variants per type keep runs feeling fresh, and stairs add helpful <strong>verticality</strong>.</p>
 
   <h2>Collision handling</h2>
   <p>Intersections and L‑turns can collide with existing geometry. Each piece carries a box collider; if it overlaps, it’s
   discarded and another candidate is tried. After several failed attempts, the algorithm skips that branch and continues,
-  which occasionally yields tighter, smaller dungeons—especially with larger room sets.</p>
+  which occasionally yields tighter, smaller dungeons, especially with larger room sets.</p>
 
   <h2>Performance</h2>
   <p>Generation is fast for small/medium sizes. Large dungeons dip due to recursion and collision checks, but a user‑controlled
-  build speed lets you trade time for smoothness. At max speed, generation completes in seconds—easy to hide behind a brief
+  build speed lets you trade time for smoothness. At max speed, generation completes in seconds, easy to hide behind a brief
   interstitial.</p>
 
   <h2>Could this become a full game?</h2>

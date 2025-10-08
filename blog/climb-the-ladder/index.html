@@ -25,7 +25,7 @@
   <div class="container">
 
 <article class="prose">
-  <h1>Climb The Ladder — Procedural Dialogue + Voice in Unity</h1>
+  <h1>Climb The Ladder , Procedural Dialogue + Voice in Unity</h1>
   <p><span class="tag">Unity</span> <span class="tag">C#</span> <span class="tag">AI</span> &nbsp; • &nbsp; <strong>29 Jan 2025</strong></p>
 
   <figure style="margin:16px 0 24px">
@@ -44,7 +44,7 @@
   <p>The project uses a Unity–OpenAI bridge (HTTPS requests) to talk to ChatGPT and Whisper. The main challenge was giving ChatGPT
   enough <strong>context</strong> to speak as a specific character in a live game world.</p>
 
-  <p>To solve that, I built a <strong>personality system</strong> with Scriptable Objects—name, job title, interests, dislikes, and more.
+  <p>To solve that, I built a <strong>personality system</strong> with Scriptable Objects, name, job title, interests, dislikes, and more.
   Each NPC receives a short “loading message” before the first line, seeded with this data plus current game state.</p>
 
   <figure><img src="/assets/images/traits.png" alt="Unity personality data (ScriptableObject)"></figure>
@@ -53,8 +53,8 @@
   Voice input is recorded, transcribed by Whisper, then sent as text to ChatGPT for a response.</p>
 
   <h2>State machines</h2>
-  <p>Player and NPC behaviour runs on <strong>finite state machines</strong> for clarity and performance. States gate actions—e.g. the
-  player can’t interact while airborne—so scripts only run when relevant.</p>
+  <p>Player and NPC behaviour runs on <strong>finite state machines</strong> for clarity and performance. States gate actions, e.g. the
+  player can’t interact while airborne, so scripts only run when relevant.</p>
 
   <figure><img src="/assets/images/statemachine.png" alt="Player state machine overview"></figure>
 
