@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>BRNDN.dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body class="scanlines">
+  <div class="headerbar">
+    <div class="container nav">
+      <a class="brand" href="/">▶︎ BRNDN.dev</a>
+      <ul>
+        <li><a  href="/">Home</a></li>
+        <li><a style="text-decoration:underline" href="/blog/">Blog</a></li>
+        <li><a  href="/projects/">Projects</a></li>
+        <li><a  href="/about/">About</a></li>
+        <li><a  href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+
+<article class="prose">
+  <h1>Dungeon Odyssey — Branch‑Based Procedural Dungeons</h1>
+  <p><span class="tag">Unity</span> <span class="tag">C#</span> <span class="tag">Procedural Gen</span> &nbsp; • &nbsp; <strong>31 Jan 2025</strong></p>
+
+  <figure style="margin:16px 0 24px">
+    <img src="/assets/images/dungeon.png" alt="Procedural dungeon overview">
+  </figure>
+
+  <p><em>Dungeon Odyssey</em> is a 3D survival prototype from my third year of CS. The goal: reach the exit of a
+  <strong>procedurally generated</strong> dungeon while fending off enemies, with light roguelike elements for replayability.
+  I built on ideas from Billy McDaniel’s “Procedural Dungeons in Unity” course and added my own spin.</p>
+
+  <h2>Overview</h2>
+  <p>Instead of placing rooms first and connecting them later, the generator grows <strong>branches</strong> step by step, placing
+  rooms and hallways as it goes. After completing the main branch, it expands any valid side branches. This makes path length
+  and shape easy to tune.</p>
+
+  <h2>Tile pieces</h2>
+  <p>I use seven prefab types—start, exit, room, hallway, stairs, door, wall—each with <strong>connectors</strong> that mark openings.
+  Pieces connect by matching connectors; once joined, both ends are flagged “connected”. Unused openings get a wall. Random
+  variants per type keep runs feeling fresh, and stairs add helpful <strong>verticality</strong>.</p>
+
+  <h2>Collision handling</h2>
+  <p>Intersections and L‑turns can collide with existing geometry. Each piece carries a box collider; if it overlaps, it’s
+  discarded and another candidate is tried. After several failed attempts, the algorithm skips that branch and continues,
+  which occasionally yields tighter, smaller dungeons—especially with larger room sets.</p>
+
+  <h2>Performance</h2>
+  <p>Generation is fast for small/medium sizes. Large dungeons dip due to recursion and collision checks, but a user‑controlled
+  build speed lets you trade time for smoothness. At max speed, generation completes in seconds—easy to hide behind a brief
+  interstitial.</p>
+
+  <h2>Could this become a full game?</h2>
+  <p>Absolutely. The system has plenty of headroom, though I’d refine generation to reduce edge‑case failures and rework the
+  early skill system. I’d also like to add a shop and equipment loop if I return to it.</p>
+
+  <p>Updates will land here in the blog if I pick it back up.</p>
+</article>
+
+    <div class="footer">© 2025 • Game Dev Neon theme • GitHub Pages ready</div>
+  </div>
+  <script src="/assets/main.js"></script>
+</body>
+</html>

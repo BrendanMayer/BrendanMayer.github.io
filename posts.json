@@ -1,14 +1,14 @@
 [
   {
-    "title": "Dungeon Generator \u2013 Devlog",
-    "description": "Project Blog Post - Brendan Mayer Brendan Mayer Back To Main Page Dungeon Odyssey: Procedurally Generated Dungeon with Connected Rooms, Hallways and Verticality...",
-    "date": "",
-    "url": "/blog/dungeon-generator/"
+    "title": "Dungeon Odyssey \u2014 Branch\u2011Based Procedural Dungeons",
+    "description": "A 3D survival\u2011dungeon prototype with room/hallway prefabs, verticality, and branch\u2011driven generation.",
+    "date": "31/01/2025",
+    "url": "/blog/dungeon-odyssey/"
   },
   {
-    "title": "Climb The Ladder \u2013 Devlog",
-    "description": "Project Blog Post - Brendan Mayer Brendan Mayer Back To Main Page Climb The Ladder: ChatGPT Generated Procedural Dialogue with Voice Recognition in Unity 29/01/...",
-    "date": "",
+    "title": "Climb The Ladder \u2014 Procedural Dialogue + Voice in Unity",
+    "description": "My final-year prototype that pairs ChatGPT-driven NPC dialogue with Whisper voice input in a compact office sim.",
+    "date": "29/01/2025",
     "url": "/blog/climb-the-ladder/"
   }
 ]
