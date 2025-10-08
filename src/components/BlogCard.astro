@@ -1,0 +1,9 @@
+---
+const { entry } = Astro.props;
+const url = `/blog/${entry.slug}/`;
+---
+<a href={url} class="card block">
+  <h3 class="font-display text-xl">{entry.data.title}</h3>
+  <p class="text-white/70 mt-2">{entry.data.description}</p>
+  <p class="text-white/50 text-sm mt-3">{new Date(entry.data.pubDate).toLocaleDateString()}</p>
+</a>

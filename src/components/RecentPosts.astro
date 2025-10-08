@@ -1,0 +1,10 @@
+---
+import BlogCard from "./BlogCard.astro";
+import { getCollection } from "astro:content";
+const { count = 3 } = Astro.props;
+const posts = await getCollection('blog');
+const recent = posts.sort((a,b)=> new Date(b.data.pubDate) - new Date(a.data.pubDate)).slice(0, count);
+---
+<div class="grid md:grid-cols-3 gap-6">
+  {recent.map(p => <BlogCard entry={p} />)}
+</div>
