@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>BRNDN.dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body class="scanlines">
+  <div class="headerbar">
+    <div class="container nav">
+      <a class="brand" href="/">▶︎ BRNDN.dev</a>
+      <ul>
+        <li><a style="text-decoration:underline" href="/">Home</a></li>
+        <li><a  href="/blog/">Blog</a></li>
+        <li><a  href="/projects/">Projects</a></li>
+        <li><a  href="/about/">About</a></li>
+        <li><a  href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+
+  <section class="hero">
+    <div>
+      <h1>Hi, I'm Brendan — I build games & tools.</h1>
+      <p style="margin-top:12px">Game-dev-inspired portfolio. Devlogs, prototypes, and notes on rendering & tools.</p>
+      <div style="margin-top:18px" class="grid" >
+        <a class="btn" href="/blog/">Read the devlog</a>
+        <a class="btn" href="/projects/">See projects</a>
+      </div>
+    </div>
+    <div class="card" style="min-height:240px;display:grid;place-items:center">
+      <div style="text-align:center;opacity:.8">
+        <div style="font-family:'Press Start 2P';font-size:48px">▌</div>
+        <p>Trailer / GIF placeholder</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top:36px">
+    <h2 style="font-family:'Press Start 2P'">Recent posts</h2>
+    <div id="recent" class="grid grid-3" style="margin-top:16px"></div>
+    <script>loadRecent(3)</script>
+  </section>
+
+    <div class="footer">© 2025 • Game Dev Neon theme • GitHub Pages ready</div>
+  </div>
+  <script src="/assets/main.js"></script>
+</body>
+</html>

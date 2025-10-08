@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>BRNDN.dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body class="scanlines">
+  <div class="headerbar">
+    <div class="container nav">
+      <a class="brand" href="/">▶︎ BRNDN.dev</a>
+      <ul>
+        <li><a  href="/">Home</a></li>
+        <li><a style="text-decoration:underline" href="/blog/">Blog</a></li>
+        <li><a  href="/projects/">Projects</a></li>
+        <li><a  href="/about/">About</a></li>
+        <li><a  href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+
+      <article class="prose">
+        <h1>Dungeon Generator – Devlog</h1>
+        
+<!-- Navigation Bar -->
+<nav>
+<div class="ui container">
+<h1>Brendan Mayer</h1>
+<ul class="nav">
+<a href="index.html">Back To Main Page</a>
+</ul>
+</div>
+</nav>
+<!-- Blog Post Section -->
+<section class="blog-post-section" id="blog-post">
+<div class="ui container">
+<!-- Blog Title and Meta -->
+<h2>Dungeon Odyssey: Procedurally Generated Dungeon with Connected Rooms, Hallways and Verticality</h2>
+<div class="ui meta">
+<span class="date">31/01/2025</span> <!-- Add the date of the post -->
+</div>
+<img alt="Header Image" class="header-image" src="images/dungeon.png"/>
+<!-- Blog Content -->
+<div class="ui segment">
+<p>
+          Dungeon Odyssey was a 3D game dev assignment made in my 3rd year of studying Computer Science. The project is a prototype for a 3D Survival Game in which the player
+           must make their way through a procedurally generated dungeon and find the exit whilst facing enemies.
+           
+        </p>
+</div>
+<!-- Project Overview -->
+<div class="ui segment">
+<h3>Project Overview</h3>
+<p>
+            As stated above, this is a prototype for a survival dungeon crawler game. I wanted some roguelike elements as well to learn as much as possible
+             so I also included a skill system for some even more replayability on top of the procedurally generated dungeons.
+             The Project builds off of what was taught in the "Procedural Dungeons in Unity" Udemy Course by Billy McDaniel.
+        </p>
+</div>
+<!-- Technologies Used -->
+<div class="ui segment">
+<h3>Technologies Used</h3>
+<div class="ui list">
+<div class="item">
+<i class="code icon"></i>
+<div class="content">
+              Unity: The game engine used to build the project.
+            </div>
+</div>
+<div class="item">
+<i class="code icon"></i>
+<div class="content">
+              C#: The programming language used for scripting in Unity.
+            </div>
+</div>
+<div class="item">
+<i class="code icon"></i>
+<div class="content">
+              Procedural Generation: Tree-based Dungeon Generation with Main and Side Branches for Paths
+            </div>
+</div>
+</div>
+<!-- How It Works -->
+<div class="ui segment">
+<h3>How It Works</h3>
+<p>
+          The Procedural Generation is branch based in this instance where each path is generated one at a time with rooms and hallways instead of randomly placing rooms with a noise or binary based algorithm and connection hallways after the fact. This approach allows for a lot of
+          fine tuning for dungeon and path sizes and allows a bit of flexibility in the generation. So how does it actually generate? To put it simply, its similar to a tilemap. The generator first starts with the main branch and once completed, moves onto any possible side branches that can be generated.
+          
+        </p>
+<p>
+          There are 7 types of prefabs or "tile pieces" I used but this can be expanded to the desired amount so long that the tile prefab has a corresponding connector (an object at an opening where two pieces or a wall can connect that stores position to place the next piece as well as a connection status such as "connected"). The starting room, exit room, normal rooms, hallways, stairs, doors and wall prefabs are what I included in this prototype. I can have as many variants which are picked at random for each type of tile piece for a seemingly infinite amount of variation
+          through each playthrough. The starting room is where the player spawns and also the starting point for the dungeon generation. The exit room is how the player can escape the dungeon and is denoted by a portal at the centre, this is also the ending point of the "Main Branch" in the dungeon.
+          Normal rooms are where the player can find loot or where enemies can spawn throughout the dungeon and are the main tile pieces. Hallways are used to connect rooms together as well as stair pieces which provides verticality to the dungeon generation.
+        </p>
+<p>Once two pieces have been connected, their corresponded connectors are then set to "connected" meaning no other pieces can be connected to these pieces. These "connected" connectors can spawn doors on them which can be opened and also blocking the view of further branches from the player.
+          Any connectors which are not marked as "connected" are then filled with a solid wall which will block off redundant paths or openings where a branch did not generate (eg. a room with 2-3 openings but only one has a connecting path leaving the other 2 open to nothing).
+          The generator is also highly customizable with different generation settings such as door spawn chance, branch lengths, branch amounts to list a few giving dynamic difficulty and larger dungeons being generated as the player progresses a liable option. 
+        </p>
+</div>
+<div class="ui segment">
+<h3>Collision of Tile Pieces?</h3>
+<p>
+            Colliding of rooms becomes a big issue if you have tile pieces that have open connectors in different directions such as an intersection room or L shaped hallways. To counter this, each room has a box collider which detects any overlapping collisions with other rooms.
+            If a collision occurs, the tile piece is then destroyed and a different piece is attempted to generate instead. This repeats a number of times until either a piece fits with no collisions, or a threshold is reached and the current branch generation is skipped and moved onto the next possible branch.
+            The addition of verticality also helps to reduce collisions as much as possible as there are rare instances where smaller dungeons are generated due to many branches being cut off during the collision checking process. This is partly due to the size of the rooms and hallway shapes as the amount of variant types I used as well. I believe if i had more hallway variants that were more likely to be chosen over rooms then less collisions would occur since when a tile is generated, it is picked by random out of all different prefab types. 
+        </p>
+</div>
+<div class="ui segment">
+<h3>Performance of the Generation</h3>
+<p>
+            The generator is quite performant when generating small to medium dungeon sizes, however, once a larger dungeon is generated there is a performance drop since there is a lot of recursion when looping over each valid connector and collision checking. However, there is a dungeon build speed included which allows the 
+            dungeon to generate slower or faster for more or less performance. The quickest speed is so fast however, that the generation happens in less than a few seconds and is not even noticable when the dungeon is generating. If a short intermission screen is showing before loading the scene, the transition from the menu to gameplay would be seemless and only take a few seconds for everything to load.
+
+      </p></div>
+<!-- Future Work -->
+<div class="ui segment">
+<h3>Could I Make a Game Out of This Prototype?</h3>
+<p>
+          I can say confidently this system and prototype as a whole has an abundance of potention for a full, playable game. I may even return to it in the future and add a full game loop. There is much that needs to be improved with the generation system however to ensure flawless generation every time but with enough tinkering
+          it is definitely able to perform well in a full game. The skill system I created is much to be desired when I compare it to what I am capable of creating with the skills and knowledge I possess now so I would most likely revamp that whole system. I had a lot of plans that fell out of scope for the original project
+          which I would like to add as well such as a shop and equipment system.
+        </p>
+</div>
+<!-- GitHub Link -->
+<div class="ui segment">
+<p>
+          Hopefully in the future I can give an update about a newer version of this project with all the additions and improvements mentioned above! Any updates will be found in the blog section!
+        </p>
+</div>
+</div>
+</div></section>
+<!-- Footer -->
+<footer>
+<div class="ui container">
+<p>© 2025 Brendan Mayer. All rights reserved.</p>
+</div>
+</footer>
+<!-- Link to Semantic UI JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script src="script.js"></script>
+
+      </article>
+    
+    <div class="footer">© 2025 • Game Dev Neon theme • GitHub Pages ready</div>
+  </div>
+  <script src="/assets/main.js"></script>
+</body>
+</html>
