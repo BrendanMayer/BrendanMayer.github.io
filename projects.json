@@ -1,32 +1,22 @@
 [
   {
-    "title": "Neon Runner",
-    "description": "Procedural synthwave endless runner prototype.",
+    "title": "Climb The Ladder",
+    "description": "My final-year prototype that pairs ChatGPT-driven NPC dialogue with Whisper voice input in a compact office sim.",
     "stack": [
       "Unity",
       "C#"
     ],
-    "url": "#",
+    "url": "https://github.com/BrendanMayer/ClimbTheLadder",
     "thumb": "/assets/images/Logo.png"
   },
   {
-    "title": "Voxel Forge",
-    "description": "In-editor voxel tool with marching cubes export.",
+    "title": "Tile Frenzy",
+    "description": "A Tile Clicker speed test game that sends high scores of players to a discord server via webhooks",
     "stack": [
       "Unreal",
       "C++"
     ],
-    "url": "#",
-    "thumb": ""
-  },
-  {
-    "title": "Tiny RTS",
-    "description": "Deterministic lockstep experiment in Godot.",
-    "stack": [
-      "Godot",
-      "GDScript"
-    ],
-    "url": "#",
-    "thumb": ""
+    "url": "https://github.com/BrendanMayer/TileFrenzy",
+    "thumb": "/assets/images/tilefrenzy.png"
   }
 ]
