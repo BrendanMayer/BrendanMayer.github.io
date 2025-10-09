@@ -124,67 +124,86 @@ document.addEventListener('DOMContentLoaded', () => {
   if(document.querySelector('#projects')) loadProjects();
 });
 
-/* ===== Retro GitHub Stats Dashboard (with Top Languages) ===== */
+/* ===== Retro GitHub Stats Dashboard (cached + errors shown) ===== */
 async function loadGitHubStats(username = "BrendanMayer") {
-  const container = document.querySelector("#github-stats");
-  if (!container) return;
+  const mount = document.querySelector("#github-stats");
+  if (!mount) return;
+
+  function renderError(msg) {
+    mount.innerHTML = `
+      <div class="github-stats">
+        <h3>GITHUB STATS — @${username}</h3>
+        <div style="opacity:.7">${msg}</div>
+      </div>`;
+  }
+
+  // simple cache
+  const KEY = `gh-stats:${username}`;
+  const now = Date.now();
+  try {
+    const cached = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (cached && (now - cached.time) < 60 * 60 * 1000) {
+      return renderFromData(cached.data);
+    }
+  } catch {}
 
   try {
-    // get main user info
-    const userRes = await fetch(`https://api.github.com/users/${username}`);
-    if (!userRes.ok) throw new Error(`GitHub API error: ${userRes.status}`);
+    // user info
+    const userRes = await fetch(`https://api.github.com/users/${username}`, { cache: "no-store" });
+    if (!userRes.ok) {
+      const text = await userRes.text();
+      throw new Error(`User API ${userRes.status}: ${text}`);
+    }
     const user = await userRes.json();
 
-    // get repos for language stats
-    const repoRes = await fetch(user.repos_url + "?per_page=100");
+    // repos for languages
+    const repoRes = await fetch(`${user.repos_url}?per_page=100&sort=updated`, { cache: "no-store" });
+    if (!repoRes.ok) {
+      const text = await repoRes.text();
+      throw new Error(`Repos API ${repoRes.status}: ${text}`);
+    }
     const repos = await repoRes.json();
 
-    // tally languages
-    const langCount = {};
-    for (const repo of repos) {
-      if (repo.language) {
-        langCount[repo.language] = (langCount[repo.language] || 0) + 1;
-      }
-    }
+    // tally languages by repo count
+    const counts = {};
+    for (const r of repos) if (r.language) counts[r.language] = (counts[r.language] || 0) + 1;
+    const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5);
 
-    // sort by count
-    const topLangs = Object.entries(langCount)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 5);
+    const created = new Date(user.created_at);
+    const data = { login:user.login, url:user.html_url, repos:user.public_repos, created, top };
 
-    const createdDate = new Date(user.created_at);
-    const createdFormatted = createdDate.toLocaleDateString(undefined, {
-      year: "numeric",
-      month: "short"
-    });
+    // cache
+    try { localStorage.setItem(KEY, JSON.stringify({ time: now, data })); } catch {}
 
-    const langLines =
-      topLangs.length > 0
-        ? topLangs
-            .map(([lang, count]) => {
-              const bar = "█".repeat(Math.min(count, 10));
-              return `<div class="line"><span>${lang}:</span><span style="color:#39ff14">${bar}</span></div>`;
-            })
-            .join("")
-        : `<div class="line"><span>No data</span></div>`;
+    renderFromData(data);
 
-    container.innerHTML = `
-      <div class="github-stats">
-        <h3>GITHUB STATS — @${user.login}</h3>
-        <div class="line"><span>Repositories:</span><span>${user.public_repos}</span></div>
-        ${langLines}
-        <div class="line"><span>Created:</span><span>${createdFormatted}</span></div>
-        <div class="line"><span>Profile:</span><span><a href="${user.html_url}" target="_blank" style="color:#39ff14">View →</a></span></div>
-      </div>
-    `;
   } catch (err) {
-    console.error(err);
-    container.innerHTML = `
+    console.error("GitHub stats error:", err);
+    // show human message for rate limiting
+    if (String(err).includes("403")) {
+      renderError("Rate limited by GitHub (unauthenticated). Try again in a minute.");
+    } else {
+      renderError("Unable to load data.");
+    }
+  }
+
+  function renderFromData(d) {
+    const createdFormatted = d.created.toLocaleDateString(undefined, { month:"short", year:"numeric" });
+    const langs = d.top.length
+      ? d.top.map(([lang,count]) => {
+          const bar = "█".repeat(Math.min(count, 10));
+          return `<div class="line"><span>${lang}:</span><span style="color:#39ff14">${bar}</span></div>`;
+        }).join("")
+      : `<div class="line"><span>No language data</span></div>`;
+
+    mount.innerHTML = `
       <div class="github-stats">
-        <h3>GITHUB STATS</h3>
-        <div style="opacity:.6;">Unable to load data</div>
-      </div>
-    `;
+        <h3>GITHUB STATS — @${d.login}</h3>
+        <div class="line"><span>Repositories:</span><span>${d.repos}</span></div>
+        ${langs}
+        <div class="line"><span>Created:</span><span>${createdFormatted}</span></div>
+        <div class="line"><span>Profile:</span><span><a href="${d.url}" target="_blank" style="color:#39ff14">View →</a></span></div>
+      </div>`;
   }
 }
 

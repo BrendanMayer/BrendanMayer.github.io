@@ -281,4 +281,22 @@ body::after {
   animation: badgePulse 5s ease-in-out infinite alternate;
 }
 
+/* Kill the center glow orb, keep the sheen/glint (::after) */
+.card::before { opacity: 0 !important; }
+.card:hover::before { opacity: 0 !important; }
 
+
+/* Home content grid: sidebar + feed */
+.home-grid{
+  display:grid;
+  grid-template-columns: 1fr 2fr;   /* left sidebar / right feed */
+  gap:24px;
+  align-items:start;
+  margin-top:36px;
+}
+@media (max-width: 900px){
+  .home-grid{ grid-template-columns: 1fr; }
+}
+
+/* Make the sidebar sections breathe a bit */
+.sidebar > section{ margin-bottom:24px; }
