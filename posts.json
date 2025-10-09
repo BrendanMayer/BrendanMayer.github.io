@@ -3,18 +3,21 @@
     "title": "Dungeon Odyssey \u2014 Branch\u2011Based Procedural Dungeons",
     "description": "A 3D survival\u2011dungeon prototype with room/hallway prefabs, verticality, and branch\u2011driven generation.",
     "date": "31/01/2025",
-    "url": "/blog/dungeon-odyssey/"
+    "url": "/blog/dungeon-odyssey/",
+    "image": "/assets/images/dungeon.png"
   },
   {
     "title": "Climb The Ladder \u2014 Procedural Dialogue + Voice in Unity",
     "description": "My final-year prototype that pairs ChatGPT-driven NPC dialogue with Whisper voice input in a compact office sim.",
     "date": "29/01/2025",
-    "url": "/blog/climb-the-ladder/"
+    "url": "/blog/climb-the-ladder/",
+    "image": "/assets/images/Logo.png"
   },
   {
     "title": "Experimenting with Unity's Editor Code to create an Item registry and Inventory System",
     "description": "A simple item creation wizard and validation tool that is tracked in a registry for ID given items",
     "date": "08/10/2025",
-    "url": "/blog/item-registry/"
+    "url": "/blog/item-registry/",
+    "image": "/assets/images/item-registry/item-creation-wizard.png"
   }
 ]

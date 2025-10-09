@@ -27,13 +27,22 @@ async function loadAll(){
     const posts = await fetchJSON('/posts.json');
     const wrap = document.querySelector('#all-posts');
     if(!wrap) return;
-    wrap.innerHTML = posts.map(p => `
-      <a class="card" href="${p.url}">
-        <h3>${p.title}</h3>
-        <p style="opacity:.8">${p.description}</p>
-        <p style="opacity:.6;font-size:12px;margin-top:8px">${p.date}</p>
-      </a>
-    `).join('');
+
+    wrap.innerHTML = posts.map(p => {
+      const img = p.image || '/assets/images/placeholder.jpg';
+      return `
+        <a class="card blog-card" href="${p.url}">
+          <h3 class="blog-title">${p.title}</h3>
+          <div class="blog-thumb">
+            <img src="${img}" alt="${p.title}">
+          </div>
+          <p class="blog-desc">${p.description}</p>
+          <div class="blog-hover" aria-hidden="true">
+            <span>Read blog post →</span>
+          </div>
+        </a>
+      `;
+    }).join('');
   }catch(e){ console.error(e); }
 }
 

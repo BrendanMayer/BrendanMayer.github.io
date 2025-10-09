@@ -300,3 +300,54 @@ body::after {
 
 /* Make the sidebar sections breathe a bit */
 .sidebar > section{ margin-bottom:24px; }
+
+/* ===== Blog Card: static layout + hover label ===== */
+.blog-card{
+  display:block;
+  padding:12px;
+  border-radius:16px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.12);
+  position:relative;
+  overflow:hidden;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.blog-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 18px rgba(0,217,255,.12), 0 0 24px rgba(0,217,255,.18);
+  border-color:rgba(0,217,255,.45);
+}
+
+.blog-title{
+  font-family:'Press Start 2P', monospace;
+  font-size:12px; line-height:1.3; margin:2px 0 10px;
+}
+.blog-thumb{
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+}
+.blog-thumb img{
+  width:100%; height:180px; object-fit:cover; display:block;
+}
+.blog-desc{
+  margin:12px 2px 2px;
+  color:var(--muted); font-size:14px; line-height:1.5;
+}
+
+/* Hover label */
+.blog-hover {
+  position:absolute; inset:0; display:grid; place-items:center;
+  background:rgba(8,10,14,.65);
+  color:#9ee7ff; font-family:ui-monospace,Menlo,Consolas,monospace;
+  letter-spacing:.3px;
+  opacity:0; transition:opacity .25s ease;
+}
+.blog-card:hover .blog-hover,
+.blog-card:focus-visible .blog-hover { opacity:1; }
+
+.blog-hover span{ 
+  border:1px solid rgba(0,217,255,.45);
+  padding:6px 10px; border-radius:8px;
+  background:rgba(0,217,255,.08);
+}
