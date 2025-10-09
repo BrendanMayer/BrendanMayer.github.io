@@ -13,8 +13,8 @@
     "title": "Tile Frenzy",
     "description": "A Tile Clicker speed test game that sends high scores of players to a discord server via webhooks",
     "stack": [
-      "Unreal",
-      "C++"
+      "Unity",
+      "C#"
     ],
     "url": "https://github.com/BrendanMayer/TileFrenzy",
     "thumb": "/assets/images/tilefrenzy.png"
