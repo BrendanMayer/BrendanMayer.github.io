@@ -18,5 +18,15 @@
     ],
     "url": "https://github.com/BrendanMayer/TileFrenzy",
     "thumb": "/assets/images/tilefrenzy.png"
+  },
+  {
+    "title": "Item registry and Inventory System",
+    "description": "A simple item creation wizard and validation tool that is tracked in a registry for ID given items",
+    "stack": [
+      "Unity",
+      "C#"
+    ],
+    "url": "https://github.com/BrendanMayer/Unity-Based-Item-Registry-and-Inventory-Framework",
+    "thumb": "/assets/images/item-registry/registry-system.png"
   }
 ]
