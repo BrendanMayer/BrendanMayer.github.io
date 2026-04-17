@@ -1,59 +1,194 @@
 <p>
-  Recently I started experimenting with Unity editor scripting to build a cleaner
-  workflow for item creation and validation. The goal was simple: reduce repetitive
-  setup work and catch bad data earlier.
-</p>
-
-<h2>Why I built it</h2>
-
-<p>
-  Creating lots of items by hand gets messy fast. IDs can conflict, prefabs can be
-  forgotten, and folder structure can drift over time. I wanted a small toolset that
-  made the process faster and more reliable without adding a lot of overhead.
-</p>
-
-<h2>The creation workflow</h2>
-
-<p>
-  I built a custom item creation wizard inside the Unity editor. Instead of manually
-  making every asset and assigning fields one by one, the wizard handles the setup
-  and keeps everything consistent.
+  <em>Climb The Ladder</em> is my final-year project: an office-set prototype where
+  the player speaks with co-workers, completes tasks, and tries to earn promotions.
+  The core idea was to explore whether AI-driven NPC interaction could support a
+  believable gameplay loop in a small, focused game prototype.
 </p>
 
 <p>
-  One of the biggest improvements was adding a registry asset to manage IDs. That
-  removed a lot of manual tracking and made it much harder to accidentally create
-  conflicting items.
+  NPC conversations are powered by procedurally generated dialogue using ChatGPT,
+  while player speech can be captured through Whisper for voice recognition. The
+  result is a system where conversations feel more dynamic than traditional
+  branching dialogue, while still being grounded in the rules of the game world.
 </p>
 
-<img src="/assets/images/item-registry/registry-system.png" alt="Registry system diagram">
+<img src="/assets/images/Logo.png" alt="Climb The Ladder cover image">
 
-<h2>Validation</h2>
+<h2>Why I made this project</h2>
 
 <p>
-  I also created a validation tool that scans item assets and checks for common
-  issues, including missing prefabs, invalid IDs, and folder mismatches. It is not
-  flashy, but it is exactly the kind of tool that saves time later.
+  I have been interested in AI-driven NPC interaction for a while, especially after
+  seeing early examples of ChatGPT-powered characters in game spaces. One major
+  inspiration was Tamulur’s 2023 showcase of conversational NPCs in a VR tavern.
+  Another was the indie game <em>Suck Up!</em>, which uses AI-generated dialogue as
+  a core part of the player experience.
 </p>
 
-<ul>
-  <li>Folder name matches item name</li>
-  <li>Each item has a valid non-zero ID</li>
-  <li>Placeable items have prefabs assigned</li>
-  <li>Paths follow the expected structure</li>
-</ul>
+<p>
+  What interested me most was not just the novelty of AI conversation, but whether
+  it could actually support gameplay in a way that felt intentional rather than
+  gimmicky. I wanted to test that idea in a more controlled setting, so I built a
+  compact office simulation where social interaction is directly tied to progression.
+</p>
 
-<img src="/assets/images/item-registry/item-validation.png" alt="Item validation window">
+<h2>Project concept</h2>
+
+<p>
+  The game takes place in an office environment where the player interacts with
+  colleagues, builds rapport, and works toward climbing the corporate ladder. The
+  setting gave me a clear structure for character roles, tasks, and dialogue tone,
+  which made it a good fit for experimenting with procedural conversation.
+</p>
+
+<p>
+  Instead of writing every dialogue path by hand, I designed the system so each NPC
+  could respond based on their personality, role, and the current state of the
+  world. That made the project less about authoring fixed conversations and more
+  about designing a framework for context-aware interaction.
+</p>
+
+<h2>How the dialogue system works</h2>
+
+<p>
+  The prototype uses a Unity-to-OpenAI pipeline built around HTTPS requests to send
+  prompts and receive responses. Whisper handles speech transcription, and ChatGPT
+  generates NPC dialogue in response to the player’s input.
+</p>
+
+<p>
+  One of the biggest design challenges was giving the language model enough context
+  to produce responses that felt like they belonged to a specific character, in a
+  specific situation, inside an active game world.
+</p>
+
+<p>
+  To solve that, I built a personality system using Scriptable Objects. Each NPC is
+  defined by data such as name, role, interests, dislikes, and other traits that
+  influence how they speak. Before the first conversation begins, the system sends a
+  compact setup message containing that personality information along with relevant
+  game-state context.
+</p>
+
+<img src="/assets/images/traits.png" alt="Unity personality data stored in a ScriptableObject">
+
+<p>
+  This gave each character a more consistent voice and made conversations feel less
+  generic. Rather than treating every interaction as a blank prompt, the model gets
+  a small but meaningful identity to work from.
+</p>
+
+<h2>Task and context integration</h2>
+
+<p>
+  The dialogue system is also connected to the game’s task system. Completed tasks
+  are fed back into the conversation context so NPCs can reference what the player
+  has already done. That makes the dialogue feel more reactive and helps reinforce
+  the illusion that characters are aware of the player’s progress.
+</p>
+
+<p>
+  This was important because procedural dialogue on its own can feel disconnected if
+  the game world is not reflected in the response. By including task progress and
+  other state information, the conversations become more tied to actual gameplay.
+</p>
+
+<h2>Voice input with Whisper</h2>
+
+<p>
+  I also integrated Whisper so the player could speak naturally instead of typing.
+  The system records the player’s voice, transcribes it into text, and then passes
+  that transcription into the dialogue pipeline. From there, ChatGPT generates the
+  NPC response based on both the transcription and the contextual data for the scene.
+</p>
+
+<p>
+  This part of the project was especially interesting because it shifted the feel of
+  the interaction. Speaking out loud changes the pacing and tone of a conversation
+  compared to selecting dialogue options, and it helped the prototype feel more
+  immediate and experimental.
+</p>
+
+<h2>State machines and gameplay structure</h2>
+
+<p>
+  Both player and NPC behaviour are controlled using finite state machines. I used
+  this approach to keep behaviour clear, predictable, and efficient. States define
+  what actions are currently valid, which helps avoid unnecessary script execution
+  and keeps interaction logic easier to reason about.
+</p>
+
+<p>
+  For example, if the player is airborne or otherwise unavailable for interaction,
+  conversation-related logic is blocked until the state changes. This made the
+  gameplay code easier to organize and helped keep the system modular as the project
+  grew.
+</p>
+
+<img src="/assets/images/statemachine.png" alt="Player state machine overview">
+
+<h2>Technical challenges</h2>
+
+<p>
+  The main challenge was making real-time transcription and procedural dialogue feel
+  responsive enough for moment-to-moment play. There is always some overhead when
+  recording speech, transcribing it, sending requests, and waiting for generated
+  text, so keeping the interaction smooth required a lot of iteration.
+</p>
+
+<p>
+  I chose a lightweight model setup to reduce response times and kept interactions
+  primarily one-to-one to manage both complexity and API usage. Those constraints
+  helped make the system more practical inside a student prototype while still
+  leaving room for experimentation.
+</p>
+
+<h2>Current status</h2>
+
+<p>
+  At its current stage, the prototype supports natural one-to-one conversations with
+  multiple NPCs, each with their own configurable identity and contextual behaviour.
+  Most of the core systems are in place, including personality data, task-aware
+  context, voice transcription, and state-based interaction logic.
+</p>
+
+<p>
+  The project is already functioning as a strong proof of concept for AI-supported
+  social gameplay, and it gave me a much better understanding of how to connect
+  generative systems with structured game design.
+</p>
 
 <h2>What I learned</h2>
 
 <p>
-  This project changed how I think about editor scripting. I used to treat editor
-  tools as side utilities, but building them properly makes development smoother and
-  helps a project scale more cleanly.
+  One of the biggest lessons from this project was that AI dialogue systems become
+  much more useful when they are treated as part of the game design, not just as a
+  technical feature. The model output matters, but the surrounding systems,
+  personality data, state management, and world context matter just as much.
 </p>
 
 <p>
-  Even small tools can have a huge payoff. Saving ten clicks per asset sounds minor
-  until you do it hundreds of times.
+  I also learned how important constraints are. The more clearly the system defines
+  who a character is, what the player has done, and what kind of interaction is
+  possible, the more coherent the final result becomes.
+</p>
+
+<h2>Future work</h2>
+
+<ul>
+  <li>Add a small <strong>skill system</strong> to unlock social perks and difficulty modifiers.</li>
+  <li>Integrate my 3D <strong>procedural office generator</strong> to make runs more replayable.</li>
+  <li>Improve memory and continuity so characters can carry more information across conversations.</li>
+  <li>Explore how procedural dialogue could support more systemic progression and mission design.</li>
+</ul>
+
+<p>
+  Overall, <em>Climb The Ladder</em> was an attempt to test how procedural dialogue,
+  voice input, and structured game systems could work together in a single playable
+  prototype. It ended up being one of the most useful projects I have worked on for
+  understanding both the strengths and limitations of AI in games.
+</p>
+
+<p>
+  Code:
+  <a href="https://github.com/BrendanMayer/ClimbTheLadder" target="_blank" rel="noopener">GitHub repository</a>.
 </p>
