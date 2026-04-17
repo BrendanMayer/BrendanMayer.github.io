@@ -1,35 +1,46 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>BRNDN.dev</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | BRNDN.dev</title>
+  <meta name="description" content="Selected projects by Brendan Mayer." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css" />
 </head>
-<body class="scanlines">
-  <div class="headerbar">
+<body>
+  <header class="headerbar">
     <div class="container nav">
-      <a class="brand" href="/">▶︎ BRNDN.dev</a>
+      <a class="brand" href="/">Brendan<span>Mayer</span></a>
       <ul>
-        
-        <li><a  href="/blog/">Blog</a></li>
-        <li><a style="text-decoration:underline" href="/projects/">Projects</a></li>
-        <li><a  href="/about/">About</a></li>
-        <li><a  href="/contact/">Contact</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a class="active" href="/projects/">Projects</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
       </ul>
     </div>
-  </div>
-  <div class="container">
+  </header>
 
-      <h1 style="font-family:'Press Start 2P'">Projects</h1>
-      <div class="prose" style="margin-top:12px"><p>Selected prototypes and tools.</p></div>
-  <div id="projects" class="grid grid-3" style="margin-top:18px"></div>
-    
-    <div class="footer">© 2025 • Game Dev Neon theme • GitHub Pages ready</div>
-  </div>
+  <main class="container">
+    <section class="page-header">
+      <h1>Projects</h1>
+      <p>
+        Selected prototypes, systems, and tools with a focus on gameplay, iteration,
+        and practical problem solving.
+      </p>
+    </section>
+
+    <section class="page-section" style="padding-top: 16px;">
+      <div id="projects" class="grid grid-3"></div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    © 2026 Brendan Mayer
+  </footer>
+
   <script src="/assets/main.js"></script>
 </body>
 </html>
