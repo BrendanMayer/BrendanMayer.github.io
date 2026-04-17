@@ -1,87 +1,108 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BRNDN.dev</title>
-
-  <!-- Fonts -->
+  <meta name="description" content="Portfolio of Brendan Mayer, a developer focused on game development, tools, and technical writing." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="/assets/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css" />
 </head>
+<body>
+  <header class="headerbar">
+    <div class="container nav">
+      <a class="brand" href="/">Brendan<span>Mayer</span></a>
+      <ul>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a class="btn" href="https://brendanmayer.github.io/commit-tracker/">Commits Tracker</a></li>
+      </ul>
+    </div>
+  </header>
 
-<body class="scanlines">
-  <!-- Parallax Wrapper -->
-  <div class="parallax-wrap">
-    <div class="parallax-content">
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Game development · tools · technical writing</div>
+        <h1>I build game systems, developer tools, and clear technical write-ups.</h1>
+        <p>
+          I’m Brendan Mayer, a Computer Science graduate focused on game development,
+          gameplay systems, and the tools that make iteration faster. This site is where
+          I show finished work, prototypes, and the thinking behind them.
+        </p>
 
-      <div class="headerbar">
-        <div class="container nav">
-          <a class="brand" href="/">▶︎ BRNDN.dev</a>
-          <ul>
-            
-            <li><a href="/blog/">Blog</a></li>
-            <li><a href="/projects/">Projects</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/contact/">Contact</a></li>
-          </ul>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/projects/">View projects</a>
+          <a class="btn" href="/blog/">Read blog posts</a>
+          <a class="btn" href="/contact/">Get in touch</a>
+          <a class="btn" href="https://brendanmayer.github.io/commit-tracker/">Commits Tracker</a>
         </div>
       </div>
 
-      <div class="container">
-        <section class="hero">
-          <div>
-            <h1>Hi, I'm Brendan — I build games & tools.</h1>
-            <p style="margin-top:12px">
-              Game-dev-inspired portfolio. Devlogs, prototypes, and notes on rendering & tools.
-            </p>
-            <div style="margin-top:18px" class="grid">
-              <a class="btn" href="/blog/">Read my devlogs</a>
-              <a class="btn" href="/projects/">See projects</a>
-            </div>
+      <aside class="hero-card">
+        <img src="/assets/images/profilepic.png" alt="Brendan Mayer">
+        <div class="hero-meta">
+          <div class="stat">
+            <strong>Unity</strong>
+            <span>Gameplay & tools</span>
           </div>
-        </section>
-        <!-- Sidebar + Recent posts -->
-        <section class="home-grid">
-          <!-- LEFT: sidebar -->
-          <div class="sidebar">
-            <section class="tech-stack">
-              <h3>TECH STACK</h3>
-              <div class="stack-grid">
-                <div class="tech-badge"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/unity.svg" alt="Unity">Unity</div>
-                <div class="tech-badge"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/csharp.svg" alt="C#">C#</div>
-                <div class="tech-badge"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cplusplus.svg" alt="C++">C++</div>
-                <div class="tech-badge"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg" alt="Python">Python</div>
-                <div class="tech-badge"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/blender.svg" alt="Blender">Blender</div>
-                <div class="tech-badge"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/git.svg" alt="Git">Git</div>
-                <div class="tech-badge"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" alt="GitHub">GitHub</div>
-                <div class="tech-badge"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/html5.svg" alt="HTML5">HTML</div>
-                <div class="tech-badge"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/css3.svg" alt="CSS3">CSS</div>
-                <div class="tech-badge"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg" alt="JavaScript">JavaScript</div>
-              </div>
-            </section>
-
-            <section id="github-stats"></section>
+          <div class="stat">
+            <strong>C#</strong>
+            <span>Primary language</span>
           </div>
-
-          <!-- RIGHT: recent posts feed -->
-          <div>
-            <h2 style="font-family:'Press Start 2P'">Recent posts</h2>
-            <div id="recent" class="grid grid-3.5" style="margin-top:16px"></div>
+          <div class="stat">
+            <strong>GitHub</strong>
+            <span>Public work</span>
           </div>
-        </section>
+        </div>
+      </aside>
+    </section>
 
-        <div class="footer">© 2025 • Game Dev Neon theme • GitHub Pages ready</div>
+    <section class="page-section">
+      <div class="section-head">
+        <div>
+          <h2>What I focus on</h2>
+          
+        </div>
       </div>
 
-    </div><!-- /.parallax-content -->
-  </div><!-- /.parallax-wrap -->
+      <div class="grid grid-3">
+        <div class="feature-item">
+          <h3>Gameplay systems</h3>
+          <p>Prototypes, interaction systems, procedural ideas, and practical game architecture.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Developer tools</h3>
+          <p>Editor tooling, pipelines, validation workflows, and utilities that reduce manual work.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Technical writing</h3>
+          <p>Breakdowns that explain what was built, why it was built, and what changed during development.</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Scripts -->
+    <section class="page-section">
+      <div class="section-head">
+        <div>
+          <h2>Recent writing</h2>
+          <p>Notes, devlogs, and breakdowns from recent projects and experiments.</p>
+        </div>
+        <a class="btn" href="/blog/">See all posts</a>
+      </div>
+
+      <div id="recent-posts" class="grid grid-3"></div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    © 2026 Brendan Mayer
+  </footer>
+
   <script src="/assets/main.js"></script>
 </body>
 </html>
