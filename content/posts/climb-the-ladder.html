@@ -1,0 +1,59 @@
+<p>
+  Recently I started experimenting with Unity editor scripting to build a cleaner
+  workflow for item creation and validation. The goal was simple: reduce repetitive
+  setup work and catch bad data earlier.
+</p>
+
+<h2>Why I built it</h2>
+
+<p>
+  Creating lots of items by hand gets messy fast. IDs can conflict, prefabs can be
+  forgotten, and folder structure can drift over time. I wanted a small toolset that
+  made the process faster and more reliable without adding a lot of overhead.
+</p>
+
+<h2>The creation workflow</h2>
+
+<p>
+  I built a custom item creation wizard inside the Unity editor. Instead of manually
+  making every asset and assigning fields one by one, the wizard handles the setup
+  and keeps everything consistent.
+</p>
+
+<p>
+  One of the biggest improvements was adding a registry asset to manage IDs. That
+  removed a lot of manual tracking and made it much harder to accidentally create
+  conflicting items.
+</p>
+
+<img src="/assets/images/item-registry/registry-system.png" alt="Registry system diagram">
+
+<h2>Validation</h2>
+
+<p>
+  I also created a validation tool that scans item assets and checks for common
+  issues, including missing prefabs, invalid IDs, and folder mismatches. It is not
+  flashy, but it is exactly the kind of tool that saves time later.
+</p>
+
+<ul>
+  <li>Folder name matches item name</li>
+  <li>Each item has a valid non-zero ID</li>
+  <li>Placeable items have prefabs assigned</li>
+  <li>Paths follow the expected structure</li>
+</ul>
+
+<img src="/assets/images/item-registry/item-validation.png" alt="Item validation window">
+
+<h2>What I learned</h2>
+
+<p>
+  This project changed how I think about editor scripting. I used to treat editor
+  tools as side utilities, but building them properly makes development smoother and
+  helps a project scale more cleanly.
+</p>
+
+<p>
+  Even small tools can have a huge payoff. Saving ten clicks per asset sounds minor
+  until you do it hundreds of times.
+</p>
