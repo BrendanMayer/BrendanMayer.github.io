@@ -1,27 +1,160 @@
 <p>
-  Dungeon Odyssey started as an experiment in building replayable spaces with a
-  branch-based procedural layout. I wanted each run to feel structured enough to be
-  readable while still producing variation.
+  <em>Dungeon Odyssey</em> is a 3D survival prototype I built during my third year of
+  Computer Science. The core goal was simple: generate a playable dungeon layout at
+  runtime, let the player fight through enemies, and reach the exit, while using
+  light roguelike structure to make repeated runs feel worthwhile.
 </p>
 
-<h2>Core idea</h2>
 <p>
-  The dungeon is assembled from room and hallway prefabs. Instead of treating the
-  layout as pure randomness, I used branch rules to shape progression and create
-  more intentional paths.
+  The project started with ideas from Billy McDaniel’s <em>Procedural Dungeons in
+  Unity</em> course, but I adapted the system in my own direction by focusing on
+  branch-based generation, room variation, and verticality. I wanted the dungeon to
+  feel more structured than pure randomness, while still being replayable and
+  unpredictable from run to run.
 </p>
 
-<h2>Goals</h2>
-<ul>
-  <li>Create readable runs with enough variation to stay interesting</li>
-  <li>Support verticality and room variety</li>
-  <li>Keep generation logic modular for iteration</li>
-</ul>
+<img src="/assets/images/dungeon.png" alt="Dungeon Odyssey procedural dungeon overview">
 
-<img src="/assets/images/dungeon.png" alt="Dungeon Odyssey screenshot">
+<h2>Project overview</h2>
 
-<h2>Takeaway</h2>
 <p>
-  The most useful lesson was that procedural generation gets much better when the
-  system is constrained in ways that support player understanding.
+  Instead of placing a full set of rooms first and connecting them afterward, the
+  generator grows the dungeon step by step through branches. As each branch expands,
+  it places rooms, hallways, and connecting pieces in sequence. Once the main branch
+  is complete, the system attempts to generate any valid side branches from available
+  openings.
+</p>
+
+<p>
+  This approach made the overall shape of the dungeon much easier to control. By
+  adjusting branch length, side-branch chance, and available tile types, I could
+  tune how linear or complex each generated layout became without rewriting the
+  whole system.
+</p>
+
+<h2>Tile pieces and connectors</h2>
+
+<p>
+  The dungeon is assembled from seven prefab categories: start, exit, room, hallway,
+  stairs, door, and wall. Each piece uses connector points to define where it can
+  link to other pieces. When two connectors align correctly, the pieces are joined
+  and both connection points are marked as used.
+</p>
+
+<p>
+  Any unused connector is closed off with a wall so the player never sees obvious
+  holes or unfinished paths. I also used random visual variants for several tile
+  types so that even if the structure follows similar rules, the final dungeon still
+  feels less repetitive.
+</p>
+
+<p>
+  One of the more useful additions was stairs. They introduced verticality into the
+  layout and made the dungeon feel more spatially interesting than a purely flat
+  floor plan.
+</p>
+
+<h2>Branch-based generation</h2>
+
+<p>
+  The branch-based approach became the defining part of the system. Rather than
+  thinking of dungeon generation as filling a large grid, I treated it more like a
+  growing path network. That made it easier to shape progression, control pacing,
+  and influence how long or direct a route to the exit might be.
+</p>
+
+<p>
+  It also gave the dungeon more readable structure. Even though the layout is
+  procedural, the player can still get a sense of main routes versus optional
+  branches, which helps the level feel more intentional.
+</p>
+
+<h2>Collision handling</h2>
+
+<p>
+  One of the main technical challenges came from overlap problems, especially with
+  intersections, corners, and more complex turns. Every generated piece carries a
+  box collider, and before placement is finalized the system checks whether that
+  collider overlaps with any existing geometry.
+</p>
+
+<p>
+  If a collision is detected, that candidate piece is discarded and another valid
+  option is tried instead. After several failed attempts, the generator abandons
+  that particular expansion path and continues elsewhere.
+</p>
+
+<p>
+  This keeps the system from getting stuck, though it does mean some runs end up
+  smaller or tighter than intended, especially when the piece set includes larger
+  rooms. Even so, that tradeoff was worthwhile because it kept the generator robust
+  enough for repeated testing.
+</p>
+
+<h2>Performance considerations</h2>
+
+<p>
+  For small to medium dungeon sizes, generation is fast and works well in practice.
+  Larger dungeons begin to slow down because of the recursive branch logic and the
+  increasing number of collision checks required as the layout grows.
+</p>
+
+<p>
+  To make that more manageable, I added a user-controlled build speed. That allowed
+  generation to be slowed down for visualization or sped up when quickly producing a
+  finished dungeon. At maximum speed, generation finishes within a few seconds,
+  which would be easy to hide behind a short loading screen or interstitial in a
+  larger game.
+</p>
+
+<h2>Gameplay fit</h2>
+
+<p>
+  The procedural system was built to support a survival-focused dungeon loop rather
+  than generation for its own sake. Enemies, navigation, and the search for the exit
+  all depend on the structure feeling readable enough to explore while still having
+  enough variation to stay interesting.
+</p>
+
+<p>
+  The roguelike influence was intentionally light, but it helped frame the dungeon
+  as something worth replaying. Even in prototype form, the system had enough
+  variation to support multiple runs without feeling identical every time.
+</p>
+
+<h2>What I learned</h2>
+
+<p>
+  The biggest lesson from this project was that procedural generation works best
+  when it is constrained in useful ways. Full randomness is rarely the most
+  interesting option. Giving the generator rules about branching, connectors, and
+  valid placement made the final result much more playable and easier to tune.
+</p>
+
+<p>
+  I also learned a lot about the practical side of generation systems, especially
+  around failure handling. A generator does not just need to create good layouts. It
+  also needs to fail gracefully when a perfect placement is not possible.
+</p>
+
+<h2>Could this become a full game?</h2>
+
+<p>
+  I think it could. The system already has a solid foundation, and there is plenty
+  of room to expand it. If I returned to the project, I would first refine the
+  generation logic to reduce edge-case placement failures and make larger dungeons
+  more reliable.
+</p>
+
+<p>
+  I would also revisit the progression layer around it. The early skill system could
+  be improved, and I would like to add a stronger equipment loop, along with things
+  like shops, better combat progression, and more meaningful decision-making between
+  runs.
+</p>
+
+<p>
+  Even as a prototype, <em>Dungeon Odyssey</em> was a useful project for exploring
+  how procedural structure, replayability, and gameplay systems can support one
+  another inside a single technical experiment.
 </p>

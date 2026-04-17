@@ -1,13 +1,13 @@
 [
   {
-    "title": "Dungeon Odyssey: Branch-Based Procedural Dungeons",
-    "description": "A 3D survival-dungeon prototype with room and hallway prefabs, verticality, and branch-driven generation.",
-    "date": "2025-01-31",
-    "slug": "dungeon-odyssey",
-    "content": "/content/posts/dungeon-odyssey.html",
-    "image": "/assets/images/dungeon.png",
-    "tags": ["Unity", "Procedural Generation", "Game Dev"],
-    "readingTime": "5 min read"
+  "title": "Dungeon Odyssey: Branch-Based Procedural Dungeons",
+  "description": "A 3D survival prototype exploring branch-based procedural dungeon generation, replayability, and readable level structure in Unity.",
+  "date": "2025-01-31",
+  "slug": "dungeon-odyssey",
+  "content": "/content/posts/dungeon-odyssey.html",
+  "image": "/assets/images/dungeon.png",
+  "tags": ["Unity", "C#", "Procedural Generation", "Game Dev"],
+  "readingTime": "5 min read"
   },
   {
     "title": "Climb The Ladder: Procedural Dialogue and Voice in Unity",
@@ -20,13 +20,13 @@
     "readingTime": "6 min read"
   },
   {
-    "title": "Building a Unity Item Registry and Inventory Workflow",
-    "description": "A custom editor workflow for item creation, ID management, validation, and inventory support.",
-    "date": "2025-10-08",
-    "slug": "item-registry",
-    "content": "/content/posts/item-registry.html",
-    "image": "/assets/images/item-registry/item-creation-wizard.png",
-    "tags": ["Unity", "Tools", "Editor Scripting"],
-    "readingTime": "7 min read"
+  "title": "Building a Unity Item Registry and Inventory Workflow",
+  "description": "An editor-tooling experiment in Unity that grew into an item registry, validation system, creation wizard, and runtime inventory workflow.",
+  "date": "2025-10-08",
+  "slug": "item-registry",
+  "content": "/content/posts/item-registry.html",
+  "image": "/assets/images/item-registry/item-creation-wizard.png",
+  "tags": ["Unity", "C#", "Editor Tools", "Inventory Systems"],
+  "readingTime": "7 min read"
   }
 ]
