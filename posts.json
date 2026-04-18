@@ -35,7 +35,7 @@
   "date": "2026-04-18",
   "slug": "commit-tracker",
   "content": "/content/posts/commit-tracker.html",
-  "image": "/assets/images/commit-tracker.png",
+  "image": "/assets/images/commit-tracker/commit-tracker.png",
   "tags": ["Web Development", "FastAPI", "GitHub", "Real-time Systems"],
   "readingTime": "6 min read"
 }
