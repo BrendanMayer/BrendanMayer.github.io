@@ -28,5 +28,17 @@
     ],
     "url": "https://github.com/BrendanMayer/Unity-Based-Item-Registry-and-Inventory-Framework",
     "thumb": "/assets/images/item-registry/registry-system.png"
-  }
+  },
+  {
+  "title": "Real-Time Commit Tracker",
+  "description": "An event-driven dashboard that tracks GitHub commits in real time using webhooks, a FastAPI backend, and a self-hosted server.",
+  "stack": [
+    "JavaScript",
+    "FastAPI",
+    "SQLite",
+    "GitHub Webhooks"
+  ],
+  "url": "https://github.com/BrendanMayer/commit-tracker",
+  "thumb": "/assets/images/commit-tracker.png"
+}
 ]

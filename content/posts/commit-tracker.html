@@ -1,0 +1,239 @@
+<p>
+  This project is a real-time commit tracking dashboard inspired by the Facepunch
+  development feed. The goal was to build a lightweight system that shows commit
+  activity as it happens, without relying on constant polling or heavy API usage.
+</p>
+
+<p>
+  You can view the live version here:
+  <a href="https://brendanmayer.github.io/commit-tracker/" target="_blank" rel="noopener">
+    Commit Tracker Dashboard
+  </a>
+</p>
+
+<h2>Why I built this</h2>
+
+<p>
+  Most tools that display GitHub activity rely on polling APIs at intervals, which
+  is inefficient and introduces delay. I wanted to build something more reactive,
+  where updates happen immediately when a commit is made.
+</p>
+
+<p>
+  The idea was to create a system that listens for events instead of repeatedly
+  asking for data. That led to an event-driven architecture built around GitHub
+  webhooks.
+</p>
+
+<h2>How it works</h2>
+
+<p>
+  The system follows a simple flow:
+</p>
+
+<ul>
+  <li>A commit is pushed to a repository</li>
+  <li>GitHub sends a webhook event</li>
+  <li>The backend receives and validates the request</li>
+  <li>The commit is stored in a database</li>
+  <li>The frontend fetches and displays the updated data</li>
+</ul>
+
+<p>
+  Instead of constantly querying GitHub, the backend reacts to incoming push events.
+  This makes the system more efficient and allows near real-time updates.
+</p>
+
+<h2>Architecture</h2>
+
+<p>
+  The project is split into a simple pipeline:
+</p>
+
+<pre><code>GitHub → Webhook → Backend (FastAPI) → SQLite → Frontend (GitHub Pages)</code></pre>
+
+<p>
+  Each part is intentionally minimal, keeping the system easy to understand and
+  deploy.
+</p>
+
+<h2>Backend implementation</h2>
+
+<p>
+  The backend is built using FastAPI and runs on a self-hosted Ubuntu server. It
+  handles incoming webhook requests, validates them using a shared secret, and
+  stores commit data in a SQLite database.
+</p>
+
+<p>
+  The webhook endpoint verifies incoming requests using HMAC signatures before
+  processing them, ensuring that only valid GitHub events are accepted.
+</p>
+
+<p>
+  Once validated, each commit is parsed and inserted into the database if it has
+  not already been recorded. The system also tracks metadata such as repository,
+  author, branch, and timestamp.
+</p>
+
+<p>
+  The backend exposes API endpoints for fetching commit data, statistics, and a
+  live event stream. The dependencies are intentionally lightweight:
+</p>
+
+<pre><code>fastapi
+uvicorn
+python-dotenv</code></pre>
+
+<p>
+  This keeps the server easy to run and maintain.
+</p>
+
+<h2>Real-time updates</h2>
+
+<p>
+  To make the dashboard feel live, I implemented a streaming endpoint using
+  Server-Sent Events (SSE). When a new commit is received, it is broadcast to all
+  connected clients instantly.
+</p>
+
+<p>
+  The frontend listens to this stream and updates the UI without needing a full
+  refresh.
+</p>
+
+<p>
+  This approach avoids the complexity of WebSockets while still providing real-time
+  behaviour.
+</p>
+
+<h2>Frontend</h2>
+
+<p>
+  The frontend is a static site hosted on GitHub Pages. It fetches initial data from
+  the backend and then subscribes to the live event stream.
+</p>
+
+<p>
+  The API base URL is configured separately, allowing the frontend to remain static
+  while pointing to a hosted backend:
+</p>
+
+<pre><code>window.APP_CONFIG = {
+  API_BASE: "https://yourdomain.com"
+};</code></pre>
+
+<p>
+  This separation makes deployment simple and keeps the frontend portable.
+</p>
+
+<p>
+  The interface displays:
+</p>
+
+<ul>
+  <li>Recent commits in a live feed</li>
+  <li>Basic statistics (commits, repositories, contributors)</li>
+  <li>A simple commit activity chart</li>
+</ul>
+
+<p>
+  The UI is intentionally minimal, focusing on readability and real-time feedback
+  rather than heavy visual design.
+</p>
+
+<h2>Hosting setup</h2>
+
+<p>
+  One of the more practical parts of this project was deployment. Instead of using a
+  cloud provider, I hosted the backend on my own Ubuntu server at home.
+</p>
+
+<p>
+  This required:
+</p>
+
+<ul>
+  <li>Purchasing a domain through Namecheap</li>
+  <li>Pointing the domain to my home network</li>
+  <li>Setting up port forwarding on my router</li>
+  <li>Running the FastAPI server on the machine</li>
+</ul>
+
+<p>
+  The backend, database, environment variables, and dependencies are all hosted on
+  this server, while the frontend remains on GitHub Pages.
+</p>
+
+<p>
+  This setup gave me full control over the system and helped me understand the
+  networking side of deployment, including routing, DNS, and exposing services
+  securely.
+</p>
+
+<h2>Design decisions</h2>
+
+<p>
+  A few key decisions shaped how the system works:
+</p>
+
+<ul>
+  <li>No historical syncing, only track commits after startup</li>
+  <li>No API polling, everything is event-driven</li>
+  <li>Keep the stack minimal and easy to run</li>
+  <li>Prioritise responsiveness over feature complexity</li>
+</ul>
+
+<p>
+  These constraints made the system simpler and easier to reason about, while still
+  achieving the main goal of real-time visibility.
+</p>
+
+<h2>Challenges</h2>
+
+<p>
+  The main challenges were around deployment and reliability rather than code
+  complexity. Getting webhooks, domain routing, and port forwarding working
+  correctly required more iteration than the application logic itself.
+</p>
+
+<p>
+  Handling edge cases like duplicate commits, invalid payloads, and filtering out
+  irrelevant events also required some care, but these were manageable once the core
+  pipeline was in place.
+</p>
+
+<h2>What I learned</h2>
+
+<p>
+  This project was a good introduction to event-driven systems and how they differ
+  from traditional request-based approaches. It also reinforced how useful simple
+  tools like webhooks can be when used correctly.
+</p>
+
+<p>
+  On the practical side, hosting the backend myself forced me to deal with real
+  deployment concerns, including networking, environment configuration, and service
+  reliability.
+</p>
+
+<p>
+  It also showed how far you can get with a very small stack when the system is
+  designed around a clear flow of data.
+</p>
+
+<h2>Future improvements</h2>
+
+<ul>
+  <li>Filtering commits by repository or author</li>
+  <li>Switching to WebSockets for more flexible real-time updates</li>
+  <li>Pagination and improved data handling for larger datasets</li>
+  <li>Authentication for private dashboards</li>
+</ul>
+
+<p>
+  Overall, this project was a focused attempt to build a real-time system from end
+  to end, from GitHub events all the way to a live frontend. It ended up being a
+  useful mix of backend development, frontend work, and real-world deployment
+  experience.
+</p>
