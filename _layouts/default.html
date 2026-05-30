@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | escape }}">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="/">Brendan Mayer</a>
+
+      <div class="nav-links">
+        <a href="/blog/">Blog</a>
+        <a href="/projects/">Projects</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="https://commits.brendanmayer.dev">Commits Tracker</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <p>© {{ site.time | date: "%Y" }} Brendan Mayer</p>
+  </footer>
+</body>
+</html>

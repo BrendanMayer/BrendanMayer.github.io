@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    <p class="eyebrow">Technical Writing</p>
+    <h1>{{ page.title }}</h1>
+
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %-d, %Y" }}
+      </time>
+
+      {% if page.tags %}
+        <span>•</span>
+        <span>{{ page.tags | join: ", " }}</span>
+      {% endif %}
+    </div>
+
+    {% if page.excerpt %}
+      <p class="post-excerpt">{{ page.excerpt }}</p>
+    {% endif %}
+
+    {% if page.image %}
+      <img class="post-hero" src="{{ page.image }}" alt="{{ page.title }}">
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>

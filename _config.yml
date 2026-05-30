@@ -1,0 +1,28 @@
+title: BRNDN.dev
+description: Game development, tools, and technical writing by Brendan Mayer.
+url: "https://brendanmayer.github.io"
+baseurl: ""
+
+markdown: kramdown
+highlighter: rouge
+
+permalink: /blog/:title/
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      author: Brendan Mayer
+
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - BrendanMayer.Github.io.zip
+  - README.md
