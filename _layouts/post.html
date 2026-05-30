@@ -20,12 +20,19 @@ layout: default
         {% if page.excerpt %}
           <p>{{ page.excerpt }}</p>
         {% endif %}
-
-        {% if page.image %}
-          <img class="post-hero" src="{{ page.image }}" alt="{{ page.title }}">
-        {% endif %}
       </header>
+    </div>
 
+    {% if page.image %}
+      <figure class="post-hero-wide">
+        <a href="{{ page.image }}">
+          <img src="{{ page.image }}" alt="{{ page.title }}">
+        </a>
+        <figcaption>Click the image to view it full size.</figcaption>
+      </figure>
+    {% endif %}
+
+    <div class="prose">
       {{ content }}
     </div>
   </div>

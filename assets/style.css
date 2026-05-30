@@ -554,3 +554,28 @@ a {
   border-radius: 22px;
   border: 1px solid var(--border);
 }
+
+/* Wide hero image for full-screen UI screenshots */
+.post-hero-wide {
+  width: 100%;
+  margin: 32px 0 48px;
+}
+
+.post-hero-wide a {
+  display: block;
+}
+
+.post-hero-wide img {
+  width: 100%;
+  height: auto;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.post-hero-wide figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: center;
+}
