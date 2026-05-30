@@ -1,15 +1,22 @@
+---
+layout: default
+title: Home
+---
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BRNDN.dev</title>
-  <meta name="description" content="Portfolio of Brendan Mayer, a developer focused on game development, tools, and technical writing." />
+  <meta name="description"
+    content="Portfolio of Brendan Mayer, a developer focused on game development, tools, and technical writing." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css" />
 </head>
+
 <body>
   <header class="headerbar">
     <div class="container nav">
@@ -67,7 +74,7 @@
       <div class="section-head">
         <div>
           <h2>What I focus on</h2>
-          
+
         </div>
       </div>
 
@@ -96,7 +103,44 @@
         <a class="btn" href="/blog/">See all posts</a>
       </div>
 
-      <div id="recent-posts" class="grid grid-3"></div>
+      <div class="grid grid-3">
+        {% for post in site.posts limit:3 %}
+        <article class="card">
+          {% if post.image %}
+          <a class="card-thumb" href="{{ post.url | relative_url }}">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          </a>
+          {% endif %}
+
+          <div class="card-body">
+            <h3>
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+
+            {% if post.description %}
+            <p>{{ post.description }}</p>
+            {% else %}
+            <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+            {% endif %}
+
+            <div class="meta-line">
+              {{ post.date | date: "%b %-d, %Y" }}
+              {% if post.readingTime %}
+              · {{ post.readingTime }}
+              {% endif %}
+            </div>
+
+            {% if post.tags %}
+            <div class="card-meta">
+              {% for tag in post.tags %}
+              <span class="tag">{{ tag }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
     </section>
   </main>
 
@@ -106,4 +150,5 @@
 
   <script src="/assets/main.js"></script>
 </body>
+
 </html>
