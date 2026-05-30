@@ -13,7 +13,7 @@ tags:
 
 This project is a real-time commit tracking dashboard inspired by the Facepunch development feed. The goal was to build a lightweight system that shows commit activity as it happens, without relying on constant polling or heavy API usage.
 
-You can view the live version here: [Commit Tracker Dashboard](https://commits.brendanmayer.dev).
+You can view the live version here: [Commit Tracker Dashboard](https://brendanmayer.github.io/commit-tracker/?page=1&page_size=20).
 
 <figure>
   <img src="/assets/images/commit-tracker/commit-tracker.png" alt="Real-time commit tracker dashboard interface">
