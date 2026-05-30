@@ -525,3 +525,32 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* Blog post image sizing */
+.prose figure {
+  margin: 32px 0;
+}
+
+.prose figure img,
+.prose > p > img,
+.prose > img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+}
+
+.prose figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.prose .post-hero {
+  width: 100%;
+  height: auto;
+  margin: 28px 0 36px;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+}
