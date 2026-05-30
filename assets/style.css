@@ -466,3 +466,62 @@ a {
   
 }
 
+/* Blog index polish */
+.blog-grid {
+  align-items: stretch;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.blog-card .card-thumb {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.blog-card .card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-card .card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-card h3 {
+  font-size: 1.25rem;
+}
+
+.blog-card h3 a {
+  color: var(--heading);
+}
+
+.blog-card h3 a:hover {
+  color: var(--accent-strong);
+}
+
+.blog-card .meta-line {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.blog-card .card-meta {
+  margin-top: 12px;
+}
+
+.blog-page-header {
+  padding-bottom: 8px;
+}
+
+@media (max-width: 760px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
