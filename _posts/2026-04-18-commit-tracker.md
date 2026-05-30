@@ -142,3 +142,28 @@ It also showed how far you can get with a very small stack when the system is de
 - Authentication for private dashboards.
 
 Overall, this project was a focused attempt to build a real-time system from end to end, from GitHub events all the way to a live frontend. It ended up being a useful mix of backend development, frontend work, and real-world deployment experience.
+
+
+## 30/05/2026 Improvements
+
+Since first building the commit tracker, I have continued expanding the project beyond the original real-time feed. The frontend is now open source and available on GitHub: [Github Repo](https://github.com/BrendanMayer/commit-tracker).
+
+A major improvement was turning the dashboard into a more complete repository activity viewer rather than just a simple commit list. I added repository-aware filtering and pagination, making it easier to browse larger sets of commits across tracked projects.
+
+The commit cards have also been improved with clearer metadata, branch styling, repository indicators, hover effects, live update animations, and automatic commit categorisation. Commits can now be tagged based on branch names and message keywords, helping distinguish features, fixes, cleanup work, merges, and hotfixes at a glance.
+
+I also added a dedicated branches view. This fetches real branch data through the GitHub API and displays it with grouped branch types, visual badges, and a more polished graph-style layout. This makes the dashboard feel less like a flat feed and more like a small visual map of repository activity.
+
+Another new feature is contributor drilldowns. Contributor profiles now show commit counts, repository activity, branch participation, recent commits, and commit tag distribution. This gives more context around who is contributing and where their work is happening.
+
+One of the bigger feature additions was support for video attachments on commit cards. Admin users can upload videos by dragging and dropping them onto commits, preview them directly in the feed, and remove them when needed. This makes it possible to attach visual progress updates, demos, or bug recordings directly to the commit timeline.
+
+I also added a releases and patch notes system. Releases can be created per repository, commits can be grouped by version, and markdown patch notes can be generated and rendered directly in the UI. This turns the tracker into a lightweight release history tool as well as a live development feed.
+
+The admin workflow has been improved too. Instead of relying on a simple upload API key prompt, the project now uses a username and password login flow for admin actions. I also added clearer admin state indicators, a logout button, custom login modal, and toast notifications so the interface feels less like a collection of browser alerts taped together in a hurry.
+
+There has also been a lot of UI polish since the original version. The dashboard now includes glass-style panels, animated tab transitions, ambient gradients, glow effects, improved analytics chart tooltips, better video card formatting, a sticky pagination footer, and smoother live commit pulse animations.
+
+Finally, I added proper public-facing project documentation, including setup notes, webhook setup information, API overview documentation, screenshots, a roadmap, contribution guidelines, and an MIT licence. The backend service remains private, but the frontend and documentation are now open source so the structure and interface can be explored publicly.
+
+These changes have made the project feel much closer to a complete development activity dashboard. What started as a small real-time commit feed has grown into a more polished tool for tracking commits, branches, contributors, releases, and visual progress updates from one place.
