@@ -246,6 +246,7 @@ a {
 }
 
 .grid-3 {
+  
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -578,4 +579,16 @@ a {
   color: var(--muted);
   font-size: 0.92rem;
   text-align: center;
+}
+
+.recent-post-grid {
+  align-items: start;
+}
+
+.recent-post-card .card-body {
+  height: auto;
+}
+
+.recent-post-card .meta-line {
+  margin-top: 14px;
 }
