@@ -40,5 +40,18 @@
   ],
   "url": "https://github.com/BrendanMayer/commit-tracker",
   "thumb": "/assets/images/commit-tracker/commit-tracker.png"
-}
+  },
+  {
+  "title": "Blogsmith: Markdown Blog Editor and Publisher",
+  "description": "an Open Source PySide6 desktop app for writing, previewing, validating, and publishing Jekyll blog posts directly to my portfolio site.",
+  "stack": [
+    "Python",
+    "PySide6",
+    "Jekyll",
+    "GitHub Pages"
+  ],
+  "url": "https://github.com/BrendanMayer/blogsmith",
+  "thumb": "/assets/images/blogsmith/blogsmith.png"
+  }
 ]
+
