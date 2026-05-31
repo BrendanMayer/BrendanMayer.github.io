@@ -152,13 +152,23 @@ A major improvement was turning the dashboard into a more complete repository ac
 
 The commit cards have also been improved with clearer metadata, branch styling, repository indicators, hover effects, live update animations, and automatic commit categorisation. Commits can now be tagged based on branch names and message keywords, helping distinguish features, fixes, cleanup work, merges, and hotfixes at a glance.
 
+![New Commit Cards](/assets/images/blog/commit-tracker/new-commit-cards.png)
+
 I also added a dedicated branches view. This fetches real branch data through the GitHub API and displays it with grouped branch types, visual badges, and a more polished graph-style layout. This makes the dashboard feel less like a flat feed and more like a small visual map of repository activity.
+
+![Dedicated Branch View](/assets/images/blog/commit-tracker/dedicated-branch-view.png)
 
 Another new feature is contributor drilldowns. Contributor profiles now show commit counts, repository activity, branch participation, recent commits, and commit tag distribution. This gives more context around who is contributing and where their work is happening.
 
+![Contributor Drilldowns](/assets/images/blog/commit-tracker/contributor-drilldowns.png)
+
 One of the bigger feature additions was support for video attachments on commit cards. Admin users can upload videos by dragging and dropping them onto commits, preview them directly in the feed, and remove them when needed. This makes it possible to attach visual progress updates, demos, or bug recordings directly to the commit timeline.
 
+![Video Attachments](/assets/images/blog/commit-tracker/video-attachments.png)
+
 I also added a releases and patch notes system. Releases can be created per repository, commits can be grouped by version, and markdown patch notes can be generated and rendered directly in the UI. This turns the tracker into a lightweight release history tool as well as a live development feed.
+
+![Patch Notes](/assets/images/blog/commit-tracker/patch-notes.png)
 
 The admin workflow has been improved too. Instead of relying on a simple upload API key prompt, the project now uses a username and password login flow for admin actions. I also added clearer admin state indicators, a logout button, custom login modal, and toast notifications so the interface feels less like a collection of browser alerts taped together in a hurry.
 
